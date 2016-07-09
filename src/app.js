@@ -11,9 +11,80 @@ xhr.open("GET", "http://10.5.5.9/gp/gpControl/status", true);
 xhr.onload = function () {
     if (xhr.readyState === xhr.DONE) {
         if (xhr.status === 200) {
+					var obj = JSON.parse(xhr.responseText);
+					var batt_percent;
+					var mode;
+					var video_left;
+					var photo_left;
+					var video_res;
+					var video_fov;
+					var video_fps;
+					var photo_res;
+					var photo_fov;
+					
+					//get camera details
+					switch(obj.status[2]){
+						case 3:
+							batt_percent = "FULL";
+							break;
+						case 2:
+							batt_percent = "MED";
+							break;
+						case 1:
+							batt_percent = "LOW";
+							break;
+						case 4:
+							batt_percent = "PWR";
+							break;
+					}
+					switch(obj.status[43]){
+						case 0:
+							switch(obj.status[44]){
+								case 0:
+									mode = "Video";
+									break;
+								case 1:
+									mode = "TLVideo";
+									break;
+								case 2:
+									mode = "VideoPhoto";
+									break;
+								case 3:
+									mode = "Looping";
+									break;
+							}
+							break;
+						case 1:
+								switch(obj.status[44]){
+								case 0:
+									mode = "Photo";
+									break;
+								case 1:
+									mode = "Continuous";
+									break;
+								case 2:
+									mode = "NightPhoto";
+									break;
+								
+							}
+							break;
+						case 2:
+								switch(obj.status[44]){
+								case 0:
+									mode = "Burst";
+									break;
+								case 1:
+									mode = "Timelapse";
+									break;
+								case 2:
+									mode = "NightLapse";
+									break;
+							}
+							break;
+					}
           var main = new UI.Card({					
   				title: 'HERO4 Session',
-					body: xhr.responseText,
+					body: 'Batt: ' + batt_percent + '\n' + mode,
   				subtitleColor: 'indigo', // Named colors
   				bodyColor: 'white', // Hex colors
 					titleColor: 'white',
