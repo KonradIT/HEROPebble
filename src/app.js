@@ -5,6 +5,8 @@
  */
 
 var UI = require('ui');
+var Vibe = require('ui/vibe');
+var Light = require('ui/light');
 
 var xhr = new XMLHttpRequest();
 xhr.open("GET", "http://10.5.5.9/gp/gpControl/status", true);
@@ -14,13 +16,9 @@ xhr.onload = function () {
 					var obj = JSON.parse(xhr.responseText);
 					var batt_percent;
 					var mode;
-					var video_left;
-					var photo_left;
-					var video_res;
-					var video_fov;
-					var video_fps;
-					var photo_res;
-					var photo_fov;
+					var left;
+					var current_res;
+					var taken;
 					
 					//get camera details
 					switch(obj.status[2]){
@@ -32,6 +30,9 @@ xhr.onload = function () {
 							break;
 						case 1:
 							batt_percent = "LOW";
+							break;
+						case 0:
+							batt_percent = "LOW!";
 							break;
 						case 4:
 							batt_percent = "PWR";
@@ -53,6 +54,47 @@ xhr.onload = function () {
 									mode = "Looping";
 									break;
 							}
+							left = obj.status[35]/60;
+							taken = obj.status[39];
+							switch(obj.settings[2]){
+								case 2:
+									current_res = "4K S";
+									break;
+								case 1:
+									current_res = "4K";
+									break;
+								case 5:
+									current_res = "2.7K S";
+									break;
+								case 4:
+									current_res = "2.7K";
+									break;
+								case 6:
+									current_res = "2.7K 4:3";
+									break;
+								case 7:
+									current_res = "1440p";
+									break;
+								case 8:
+									current_res = "1080p S";
+									break;
+								case 9:
+									current_res = "1080p";
+									break;
+								case 10:
+									current_res = "960p";
+									break;
+								case 11:
+									current_res = "720p S";
+									break;
+								case 12:
+									current_res = "720p";
+									break;
+								case 13:
+									current_res = "WVGA";
+									break;
+															
+							}
 							break;
 						case 1:
 								switch(obj.status[44]){
@@ -67,6 +109,22 @@ xhr.onload = function () {
 									break;
 								
 							}
+							left = obj.status[34];
+							taken = obj.status[38];
+							switch(obj.settings[17]){
+								case 0:
+									current_res = "12MP W";
+									break;
+								case 1:
+									current_res = "7MP W";
+									break;
+								case 2:
+									current_res = "7MP M";
+									break;
+								case 3:
+									current_res = "5MP M/W";
+									break;
+							}
 							break;
 						case 2:
 								switch(obj.status[44]){
@@ -80,14 +138,28 @@ xhr.onload = function () {
 									mode = "NightLapse";
 									break;
 							}
+							left = obj.status[34];
+							taken = obj.status[39];
+							switch(obj.settings[28]){
+								case 0:
+									current_res = "12MP W";
+									break;
+								case 1:
+									current_res = "7MP W";
+									break;
+								case 2:
+									current_res = "7MP M";
+									break;
+								case 3:
+									current_res = "5MP M/W";
+									break;
+							}
 							break;
 					}
           var main = new UI.Card({					
-  				title: 'HERO4 Session',
-					body: 'Batt: ' + batt_percent + '\n' + mode,
-  				subtitleColor: 'indigo', // Named colors
-  				bodyColor: 'white', // Hex colors
-					titleColor: 'white',
+					body: 'Batt: ' + batt_percent + '\n' + mode + '\n' + current_res + '\n' + taken + '\n' + left + ' left',
+  				subtitleColor: 'indigo', 
+  				bodyColor: 'white', 
 					backgroundColor: 'black'
 });
 
@@ -202,18 +274,6 @@ main.show();
   menu.show();
 });
 
-//command function for HERO4 (/settings!)
-function command_h4(param, value) {
-		var xhr = new XMLHttpRequest();
-    xhr.open("GET", "http://10.5.5.9/gp/gpControl/setting/" + param + "/" + value, true);        
-		xhr.send(null);
-} 
-//command function for HERO4 (modes, etc...)
-function command_h4_modes(main_mode, sub_mode){
-		var xhr = new XMLHttpRequest();
-    xhr.open("GET", "http://10.5.5.9/gp/gpControl/command/sub_mode?mode=" + main_mode + "&sub_mode=" + sub_mode, true);        
-		xhr.send(null);
-}
 main.on('click', 'select', function(e) {
     var xhr = new XMLHttpRequest();
     xhr.open("GET", "http://10.5.5.9/gp/gpControl/command/shutter?p=1", true);        
@@ -223,60 +283,87 @@ main.on('click', 'down', function(e) {
     var menu = new UI.Menu({
     sections: [{
       items: [{
-        title: 'Settings',
+        title: 'Turn On/Off',
+      },{
+        title: 'Video Resolution',
       }, {
-        subtitle: 'Video Resolution',
+        title: 'Video Framerate',
       }, {
-        subtitle: 'Video Framerate',
+        title: 'Video Protune',
       }, {
-        subtitle: 'Video Protune',
-      }, {
-        subtitle: 'Photo Resolution',
+        title: 'Photo Resolution',
       },{
-        subtitle: 'Photo Protune',
+        title: 'Photo Protune',
       },{
-        subtitle: 'Continuous photo rate',
+        title: 'Continuous photo rate',
       },{
-        subtitle: 'NightPhoto Exposure',
+        title: 'NightPhoto Exposure',
       },{
-        subtitle: 'MultiShot resolution',
+        title: 'MultiShot resolution',
       },{
-        subtitle: 'Burst Rate',
+        title: 'Burst Rate',
       },{
-        subtitle: 'Timelapse Interval',
+        title: 'Timelapse Interval',
       },{
-        subtitle: 'NightLapse exposure',
+        title: 'NightLapse exposure',
       },{
-        subtitle: 'NightLapse Interval',
+        title: 'NightLapse Interval',
       },{
-				title: 'Other',
+        title: 'LEDs',
       },{
-        subtitle: 'LEDs',
+        title: 'Beeping',
       },{
-        subtitle: 'Beeping',
-      },{
-        subtitle: 'Auto off',
+        title: 'Auto off',
       }]
-			
     }]
   });
   menu.on('select', function(e) {
     console.log('Selected item #' + e.itemIndex + ' of section #' + e.sectionIndex);
     console.log('The item is titled "' + e.item.title + '"');
-  });
+  	if(e.itemIndex === 0){
+			var menu = new UI.Menu({
+  		backgroundColor: 'black',
+  		textColor: 'blue',
+  		highlightBackgroundColor: 'blue',
+  		highlightTextColor: 'black',
+  		sections: [{
+    		title: 'First section',
+    			items: [{
+      			title: 'ON',
+    		}, {
+						title: 'OFF'
+    }]
+  }]
+});
+			menu.show();
+		}
+	});
   menu.show();
 });
         }
     }
 };
 xhr.send(null);
+//command function for HERO4 (/settings!)
+function command_h4(param, value) {
+		var xhr = new XMLHttpRequest();
+    xhr.open("GET", "http://10.5.5.9/gp/gpControl/setting/" + param + "/" + value, true);
+		xhr.send(null);
+} 
+//command function for HERO4 (modes, etc...)
+function command_h4_modes(main_mode, sub_mode){
+		var xhr = new XMLHttpRequest();
+    xhr.open("GET", "http://10.5.5.9/gp/gpControl/command/sub_mode?mode=" + main_mode + "&sub_mode=" + sub_mode, true); 
+		xhr.send(null);
+		
+	}
 var main_nc = new UI.Card({					
   title: 'NOT CONNECTED',
-	body: '',
+	body: 'Please connect the GoPro WiFi to phone!',
   subtitleColor: 'indigo', // Named colors
   bodyColor: 'white', // Hex colors
 	titleColor: 'white',
 	backgroundColor: 'black'
 });
-
+Light.trigger();
 main_nc.show();
