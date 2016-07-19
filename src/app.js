@@ -157,7 +157,7 @@ xhr.onload = function () {
 							break;
 					}
           var main = new UI.Card({					
-					body: 'Batt: ' + batt_percent + '\n' + mode + '\n' + current_res + '\n' + taken + '\n' + left + ' left',
+					body: 'Batt: ' + batt_percent + '\n' + mode + '\n' + current_res + '\n' + taken + ' shots' + '\n' + left + ' left',
   				subtitleColor: 'indigo', 
   				bodyColor: 'white', 
 					backgroundColor: 'black'
@@ -166,10 +166,12 @@ xhr.onload = function () {
 main.show();
 					main.on('click', 'up', function(e) {
   var menu = new UI.Menu({
+			backgroundColor: 'black',
+  		textColor: 'white',
+			highlightBackgroundColor: 'blue',
+  		highlightTextColor: 'red',
     sections: [{
       items: [{
-        title: 'Camera Modes',
-      }, {
         title: 'Video',
       }, {
         title: 'Photo',
@@ -181,8 +183,12 @@ main.show();
   menu.on('select', function(e) {
     console.log('Selected item #' + e.itemIndex + ' of section #' + e.sectionIndex);
     console.log('The item is titled "' + e.item.title + '"');
-		if(e.itemIndex == 1){
+		if(e.itemIndex === 0){
 			var video_menu = new UI.Menu({
+			backgroundColor: 'black',
+  		textColor: 'white',
+			highlightBackgroundColor: 'blue',
+  		highlightTextColor: 'red',
     sections: [{
       items: [{
         title: 'Single',
@@ -215,8 +221,12 @@ main.show();
 	}
 	
 	//Photo menu
-	if(e.itemIndex == 2){
+	if(e.itemIndex == 1){
 		var photo_menu = new UI.Menu({
+			backgroundColor: 'black',
+  		textColor: 'white',
+			highlightBackgroundColor: 'blue',
+  		highlightTextColor: 'red',
     sections: [{
       items: [{
         title: 'Single',
@@ -243,8 +253,12 @@ main.show();
   photo_menu.show();
 	}
 	//MultiShot menu
-	if(e.itemIndex == 3){
+	if(e.itemIndex == 2){
 		var ms_menu = new UI.Menu({
+			backgroundColor: 'black',
+  		textColor: 'white',
+			highlightBackgroundColor: 'blue',
+  		highlightTextColor: 'red',
     sections: [{
       items: [{
         title: 'Burst',
@@ -275,12 +289,29 @@ main.show();
 });
 
 main.on('click', 'select', function(e) {
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", "http://10.5.5.9/gp/gpControl/command/shutter?p=1", true);        
+	xhr.open("GET", "http://10.5.5.9/gp/gpControl/status", true);
+	xhr.onload = function () {
+    if (xhr.readyState === xhr.DONE) {
+        if (xhr.status === 200) {
+					var obj = JSON.parse(xhr.responseText);
+					if(obj.status[8] === 0){
+   			  	xhr.open("GET", "http://10.5.5.9/gp/gpControl/command/shutter?p=1", true);        
+						xhr.send(null);	
+					}
+					if(obj.status[8] === 1){
+						xhr.open("GET", "http://10.5.5.9/gp/gpControl/command/shutter?p=0", true);        
 		xhr.send(null);
+					}
+				}
+		}
+	};				
 });
-main.on('click', 'down', function(e) {
+main.on('click', 'down', function(e){
     var menu = new UI.Menu({
+			backgroundColor: 'black',
+  		textColor: 'white',
+			highlightBackgroundColor: 'blue',
+  		highlightTextColor: 'red',
     sections: [{
       items: [{
         title: 'Turn On/Off',
@@ -323,9 +354,9 @@ main.on('click', 'down', function(e) {
   	if(e.itemIndex === 0){
 			var menu = new UI.Menu({
   		backgroundColor: 'black',
-  		textColor: 'blue',
+  		textColor: 'white',
   		highlightBackgroundColor: 'blue',
-  		highlightTextColor: 'black',
+  		highlightTextColor: 'red',
   		sections: [{
     		title: 'First section',
     			items: [{
@@ -357,6 +388,7 @@ function command_h4_modes(main_mode, sub_mode){
 		xhr.send(null);
 		
 	}
+
 var main_nc = new UI.Card({					
   title: 'NOT CONNECTED',
 	body: 'Please connect the GoPro WiFi to phone!',
