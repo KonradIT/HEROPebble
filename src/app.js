@@ -7,10 +7,14 @@
 var UI = require('ui');
 var Vibe = require('ui/vibe');
 var Light = require('ui/light');
-
-var xhr = new XMLHttpRequest();
-xhr.open("GET", "http://10.5.5.9/gp/gpControl/status", true);
-xhr.onload = function () {
+var main = new UI.Card({
+  title: 'Hello People!'
+});
+function main_cam(){
+	var xhr = new XMLHttpRequest();
+	xhr.open("GET", "http://10.5.5.9/gp/gpControl/status", true);
+	xhr.timeout = 800;
+	xhr.onload = function () {
     if (xhr.readyState === xhr.DONE) {
         if (xhr.status === 200) {
 					var obj = JSON.parse(xhr.responseText);
@@ -156,7 +160,7 @@ xhr.onload = function () {
 							}
 							break;
 					}
-          var main = new UI.Card({					
+          main = new UI.Card({					
 					body: 'Batt: ' + batt_percent + '\n' + mode + '\n' + current_res + '\n' + taken + ' shots' + '\n' + left + ' left',
   				subtitleColor: 'indigo', 
   				bodyColor: 'white', 
@@ -169,7 +173,7 @@ main.show();
 			backgroundColor: 'black',
   		textColor: 'white',
 			highlightBackgroundColor: 'blue',
-  		highlightTextColor: 'red',
+  		highlightTextColor: 'white',
     sections: [{
       items: [{
         title: 'Video',
@@ -188,7 +192,7 @@ main.show();
 			backgroundColor: 'black',
   		textColor: 'white',
 			highlightBackgroundColor: 'blue',
-  		highlightTextColor: 'red',
+  		highlightTextColor: 'white',
     sections: [{
       items: [{
         title: 'Single',
@@ -226,7 +230,7 @@ main.show();
 			backgroundColor: 'black',
   		textColor: 'white',
 			highlightBackgroundColor: 'blue',
-  		highlightTextColor: 'red',
+  		highlightTextColor: 'white',
     sections: [{
       items: [{
         title: 'Single',
@@ -258,7 +262,7 @@ main.show();
 			backgroundColor: 'black',
   		textColor: 'white',
 			highlightBackgroundColor: 'blue',
-  		highlightTextColor: 'red',
+  		highlightTextColor: 'white',
     sections: [{
       items: [{
         title: 'Burst',
@@ -290,28 +294,41 @@ main.show();
 
 main.on('click', 'select', function(e) {
 	xhr.open("GET", "http://10.5.5.9/gp/gpControl/status", true);
+	xhr.timeout = 800;
 	xhr.onload = function () {
     if (xhr.readyState === xhr.DONE) {
         if (xhr.status === 200) {
 					var obj = JSON.parse(xhr.responseText);
-					if(obj.status[8] === 0){
-   			  	xhr.open("GET", "http://10.5.5.9/gp/gpControl/command/shutter?p=1", true);        
-						xhr.send(null);	
-					}
-					if(obj.status[8] === 1){
-						xhr.open("GET", "http://10.5.5.9/gp/gpControl/command/shutter?p=0", true);        
-		xhr.send(null);
+					
+					//get camera rec status
+					var xhr2 = new XMLHttpRequest();
+					switch(obj.status[8]){
+						case 0:
+							//record
+   			  		xhr2.open("GET", "http://10.5.5.9/gp/gpControl/command/shutter?p=1", true);        
+							xhr2.send(null);	
+							Vibe.vibrate('double');
+							main.backgroundColor('red');
+							break;
+						case 1:
+							//stop
+   			  		xhr2.open("GET", "http://10.5.5.9/gp/gpControl/command/shutter?p=0", true);        
+							xhr2.send(null);	
+							Vibe.vibrate('short');
+							main.backgroundColor('black');
+							break;
 					}
 				}
 		}
-	};				
+	};
+	xhr.send(null);
 });
 main.on('click', 'down', function(e){
     var menu = new UI.Menu({
 			backgroundColor: 'black',
   		textColor: 'white',
 			highlightBackgroundColor: 'blue',
-  		highlightTextColor: 'red',
+  		highlightTextColor: 'white',
     sections: [{
       items: [{
         title: 'Turn On/Off',
@@ -375,6 +392,8 @@ main.on('click', 'down', function(e){
     }
 };
 xhr.send(null);
+}
+
 //command function for HERO4 (/settings!)
 function command_h4(param, value) {
 		var xhr = new XMLHttpRequest();
@@ -399,3 +418,4 @@ var main_nc = new UI.Card({
 });
 Light.trigger();
 main_nc.show();
+main_cam();
