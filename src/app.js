@@ -7,39 +7,60 @@
 var UI = require('ui');
 var Vibe = require('ui/vibe');
 var Light = require('ui/light');
+
 var main = new UI.Card({
   title: 'Hello People!'
 });
-function main_cam(){
-	var model ="";
-	var xhr_model = new XMLHttpRequest();
-	xhr_model.open("GET", "http://10.5.5.9/gp/gpControl", true);
-	xhr_model.timeout = 800;
-	xhr_model.onload = function () {
-    if (xhr_model.readyState === xhr_model.DONE) {
-        if (xhr_model.status === 200) {
-					
-					var model_obj = JSON.parse(xhr_model.responseText);
-					model = model_obj.info['model name'];
-				}
-		}
-	};
 
-    //code goes here that will be run every 5 seconds.    
+//command function for HERO4 (/settings!)
+function command_h4(param, value) {
+		var xhr = new XMLHttpRequest();
+    xhr.open("GET", "http://10.5.5.9/gp/gpControl/setting/" + param + "/" + value, true);
+	xhr.send(null);
+} 
+//command function for HERO4 (modes, etc...)
+function command_h4_modes(main_mode, sub_mode){
+		var xhr = new XMLHttpRequest();
+    xhr.open("GET", "http://10.5.5.9/gp/gpControl/command/sub_mode?mode=" + main_mode + "&sub_mode=" + sub_mode, true); 
+		xhr.send(null);
+		
+	}
+var main_nc = new UI.Card({					
+  title: 'NOT CONNECTED',
+	body: 'Please connect the GoPro WiFi to phone!',
+  subtitleColor: 'indigo', // Named colors
+  bodyColor: 'white', // Hex colors
+	titleColor: 'white',
+	backgroundColor: 'black'
+});
+main_nc.show();
 
+function draw_ui(d_batt, d_mode, d_current_res, d_taken, d_left){
+          main = new UI.Card({					
+					body: 'Batt: ' + d_batt + '\n' + d_mode + '\n' + d_current_res + '\n' + d_taken + ' shots' + '\n' + d_left + ' left',
+  				subtitleColor: 'indigo', 
+  				bodyColor: 'white', 
+					backgroundColor: 'black'
+						
+						
+});
+main.show();
+}
+
+function get_data_cam(){
 	var xhr = new XMLHttpRequest();
 	xhr.open("GET", "http://10.5.5.9/gp/gpControl/status", true);
 	xhr.timeout = 800;
+	var batt_percent;
+	var mode;
+	var left;
+	var current_res;
+	var taken;
 	xhr.onload = function () {
     if (xhr.readyState === xhr.DONE) {
         if (xhr.status === 200) {
-					
 					var obj = JSON.parse(xhr.responseText);
-					var batt_percent;
-					var mode;
-					var left;
-					var current_res;
-					var taken;
+
 					
 					//get camera details
 					switch(obj.status[2]){
@@ -178,14 +199,16 @@ function main_cam(){
 							}
 							break;
 					}
-          main = new UI.Card({					
-					body: 'Batt: ' + batt_percent + '\n' + mode + '\n' + current_res + '\n' + taken + ' shots' + '\n' + left + ' left',
-  				subtitleColor: 'indigo', 
-  				bodyColor: 'white', 
-					backgroundColor: 'black'
-});
-main.show();
-					main.on('click', 'up', function(e) {
+										 }
+			
+    }
+};
+xhr.send(null);
+//draw_ui(batt_percent, mode, current_res, taken, left);
+}
+get_data_cam();
+
+main.on('click', 'up', function(e) {
   var menu = new UI.Menu({
 			title: 'modes',
 			backgroundColor: 'black',
@@ -227,21 +250,25 @@ main.show();
 		switch(video_menu_selection.itemIndex){
 			case 0:
 				command_h4_modes('0','0');
+				get_data_cam();
 				video_menu.hide();
 				menu.hide();
 				break;
 			case 1:
 				command_h4_modes('0','1');
+				get_data_cam();
 				video_menu.hide();
 				menu.hide();
 				break;
 			case 2:
 				command_h4_modes('0','2');
+				get_data_cam();
 				video_menu.hide();
 				menu.hide();
 				break;
 			case 3:
 				command_h4_modes('0','3');
+				get_data_cam();
 				video_menu.hide();
 				menu.hide();
 				break;
@@ -331,6 +358,8 @@ main.show();
 });
 
 main.on('click', 'select', function(e) {
+			var xhr = new XMLHttpRequest();
+
 	xhr.open("GET", "http://10.5.5.9/gp/gpControl/status", true);
 	xhr.timeout = 800;
 	xhr.onload = function () {
@@ -414,7 +443,7 @@ main.on('click', 'down', function(e){
   					backgroundColor: 'black',
   					textColor: 'white',
   					highlightBackgroundColor: 'blue',
-  					highlightTextColor: 'red',
+  					highlightTextColor: 'white',
   					sections: [{
     					title: 'Single Video settings',
     						items: [{
@@ -440,19 +469,63 @@ main.on('click', 'down', function(e){
 								case 0:
 									//Video resolution
 									var video_res_menu = new UI.Menu();
-									video_res_menu.items(0, [ { title: model }, { title: 'new item2' } ]);
+									video_res_menu.items(0, [ { title: '4K' }, 
+																					 { title: '2.7K' }, 
+																					 { title: '2.7K S' }, 
+																					 { title: '1440p' }, 
+																					 { title: '1080p' }, 
+																					 { title: '1080p S' }, 
+																					 { title: '960p' },  
+																					 { title: '720p' }]);
 									video_res_menu.show();
 									break;
 								case 1:
 									//Video framerate
+									var video_fr_menu = new UI.Menu();
+									video_fr_menu.items(0, [ { title: '12' }, 
+																					 { title: '25' }, 
+																					 { title: '30' }, 
+																					 { title: '48' }, 
+																					 { title: '60' }, 
+																					 { title: '90' }, 
+																					 { title: '120' },  
+																					 { title: '240' }]);
+									video_fr_menu.show();
+									break;
 								case 2:
 									//Video FOV
+								  var video_fov_menu = new UI.Menu();
+									video_fov_menu.items(0, [ { title: 'WIDE' }, 
+																					 { title: 'MEDIUM' }, 
+																					 { title: 'NARROW' }]);
+									video_fov_menu.show();
+									break;
 								case 3:
 									//Video SM
+									var video_sm_menu = new UI.Menu();
+									video_sm_menu.items(0, [ { title: 'ON' }, 
+																					 { title: 'OFF' }]);
+									video_sm_menu.show();
+									break;
 								case 4:
 									//Video Low light
+									 var video_lowlight_menu = new UI.Menu();
+									video_lowlight_menu.items(0, [ { title: 'ON' }, 
+																					 { title: 'OFF' }, 
+																					 { title: 'NARROW' }]);
+									video_lowlight_menu.show();
+									break;
 								case 5:
 									//Video protune
+									 var video_pt_menu = new UI.Menu();
+									video_pt_menu.items(0, [ { title: 'Protune' }, 
+																					 { title: 'White Balance' }, 
+																					 { title: 'Color' },
+																					 { title: 'ISO' },
+																				   { title: 'Sharpness' },
+																					 { title: 'EV compensation' },]);
+									video_pt_menu.show();
+									break;
 							}
 						});
 					video_single_menu.show();
@@ -463,36 +536,4 @@ main.on('click', 'down', function(e){
 	});
   settings_menu.show();
 });
-        }
-			
-    }
-};
-xhr.send(null);
-
-}
-
-//command function for HERO4 (/settings!)
-function command_h4(param, value) {
-		var xhr = new XMLHttpRequest();
-    xhr.open("GET", "http://10.5.5.9/gp/gpControl/setting/" + param + "/" + value, true);
-	xhr.send(null);
-} 
-//command function for HERO4 (modes, etc...)
-function command_h4_modes(main_mode, sub_mode){
-		var xhr = new XMLHttpRequest();
-    xhr.open("GET", "http://10.5.5.9/gp/gpControl/command/sub_mode?mode=" + main_mode + "&sub_mode=" + sub_mode, true); 
-		xhr.send(null);
-		
-	}
-var main_nc = new UI.Card({					
-  title: 'NOT CONNECTED',
-	body: 'Please connect the GoPro WiFi to phone!',
-  subtitleColor: 'indigo', // Named colors
-  bodyColor: 'white', // Hex colors
-	titleColor: 'white',
-	backgroundColor: 'black'
-});
-main_nc.show();
-
-main_cam();
-
+       
