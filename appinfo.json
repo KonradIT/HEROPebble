@@ -37,7 +37,7 @@
         ]
     },
     "sdkVersion": "3",
-    "shortName": "GoPro",
+    "shortName": "CamControl GP",
     "targetPlatforms": [
         "aplite",
         "basalt",

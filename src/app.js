@@ -11,12 +11,29 @@ var main = new UI.Card({
   title: 'Hello People!'
 });
 function main_cam(){
+	var model ="";
+	var xhr_model = new XMLHttpRequest();
+	xhr_model.open("GET", "http://10.5.5.9/gp/gpControl", true);
+	xhr_model.timeout = 800;
+	xhr_model.onload = function () {
+    if (xhr_model.readyState === xhr_model.DONE) {
+        if (xhr_model.status === 200) {
+					
+					var model_obj = JSON.parse(xhr_model.responseText);
+					model = model_obj.info['model name'];
+				}
+		}
+	};
+
+    //code goes here that will be run every 5 seconds.    
+
 	var xhr = new XMLHttpRequest();
 	xhr.open("GET", "http://10.5.5.9/gp/gpControl/status", true);
 	xhr.timeout = 800;
 	xhr.onload = function () {
     if (xhr.readyState === xhr.DONE) {
         if (xhr.status === 200) {
+					
 					var obj = JSON.parse(xhr.responseText);
 					var batt_percent;
 					var mode;
@@ -26,6 +43,7 @@ function main_cam(){
 					
 					//get camera details
 					switch(obj.status[2]){
+					
 						case 3:
 							batt_percent = "FULL";
 							break;
@@ -166,10 +184,10 @@ function main_cam(){
   				bodyColor: 'white', 
 					backgroundColor: 'black'
 });
-
 main.show();
 					main.on('click', 'up', function(e) {
   var menu = new UI.Menu({
+			title: 'modes',
 			backgroundColor: 'black',
   		textColor: 'white',
 			highlightBackgroundColor: 'blue',
@@ -209,15 +227,23 @@ main.show();
 		switch(video_menu_selection.itemIndex){
 			case 0:
 				command_h4_modes('0','0');
+				video_menu.hide();
+				menu.hide();
 				break;
 			case 1:
 				command_h4_modes('0','1');
+				video_menu.hide();
+				menu.hide();
 				break;
 			case 2:
 				command_h4_modes('0','2');
+				video_menu.hide();
+				menu.hide();
 				break;
 			case 3:
 				command_h4_modes('0','3');
+				video_menu.hide();
+				menu.hide();
 				break;
 		}
   });
@@ -245,12 +271,18 @@ main.show();
 		switch(photo_menu_selection.itemIndex){
 			case 0:
 				command_h4_modes('1','0');
+				photo_menu.hide();
+				menu.hide();
 				break;
 			case 1:
 				command_h4_modes('1','1');
+				photo_menu.hide();
+				menu.hide();
 				break;
 			case 2:
 				command_h4_modes('1','2');
+				photo_menu.hide();
+				menu.hide();
 				break;
 		}
   });
@@ -277,12 +309,18 @@ main.show();
 		switch(photo_menu_selection.itemIndex){
 			case 0:
 				command_h4_modes('2','0');
+			  ms_menu.hide();
+				menu.hide();	
 				break;
 			case 1:
 				command_h4_modes('2','1');
+				ms_menu.hide();
+				menu.hide();
 				break;
 			case 2:
 				command_h4_modes('2','2');
+				ms_menu.hide();
+				menu.hide();
 				break;
 		}
   });
@@ -308,7 +346,9 @@ main.on('click', 'select', function(e) {
    			  		xhr2.open("GET", "http://10.5.5.9/gp/gpControl/command/shutter?p=1", true);        
 							xhr2.send(null);	
 							Vibe.vibrate('double');
-							main.backgroundColor('red');
+							if(obj.status[43] === 0){
+								main.backgroundColor('red');	
+							}
 							break;
 						case 1:
 							//stop
@@ -324,81 +364,118 @@ main.on('click', 'select', function(e) {
 	xhr.send(null);
 });
 main.on('click', 'down', function(e){
-    var menu = new UI.Menu({
+    var settings_menu = new UI.Menu({
+			title: 'settings',
 			backgroundColor: 'black',
   		textColor: 'white',
 			highlightBackgroundColor: 'blue',
   		highlightTextColor: 'white',
     sections: [{
+			title: 'settings',
       items: [{
-        title: 'Turn On/Off',
+        title: 'VIDEO',
       },{
-        title: 'Video Resolution',
+        title: 'PHOTO',
       }, {
-        title: 'Video Framerate',
+        title: 'MULTISHOT',
       }, {
-        title: 'Video Protune',
-      }, {
-        title: 'Photo Resolution',
-      },{
-        title: 'Photo Protune',
-      },{
-        title: 'Continuous photo rate',
-      },{
-        title: 'NightPhoto Exposure',
-      },{
-        title: 'MultiShot resolution',
-      },{
-        title: 'Burst Rate',
-      },{
-        title: 'Timelapse Interval',
-      },{
-        title: 'NightLapse exposure',
-      },{
-        title: 'NightLapse Interval',
-      },{
-        title: 'LEDs',
-      },{
-        title: 'Beeping',
-      },{
-        title: 'Auto off',
+        title: 'MISC',
       }]
     }]
   });
-  menu.on('select', function(e) {
+  settings_menu.on('select', function(e) {
     console.log('Selected item #' + e.itemIndex + ' of section #' + e.sectionIndex);
     console.log('The item is titled "' + e.item.title + '"');
   	if(e.itemIndex === 0){
-			var menu = new UI.Menu({
+			var video_mode_menu = new UI.Menu({
   		backgroundColor: 'black',
   		textColor: 'white',
   		highlightBackgroundColor: 'blue',
-  		highlightTextColor: 'red',
+  		highlightTextColor: 'white',
   		sections: [{
-    		title: 'First section',
+    		title: 'Video modes',
     			items: [{
-      			title: 'ON',
+      			title: 'Video',
     		}, {
-						title: 'OFF'
-    }]
+						title: 'TL Video'
+				},{
+						title: 'Video+Photo'
+				}, {
+						title: 'Looping'
+				}]
   }]
 });
-			menu.show();
+			video_mode_menu.on('select', function(e) {
+    console.log('Selected item #' + e.itemIndex + ' of section #' + e.sectionIndex);
+    console.log('The item is titled "' + e.item.title + '"');
+				switch(e.itemIndex){
+					case 0:
+						var video_single_menu = new UI.Menu({
+  					backgroundColor: 'black',
+  					textColor: 'white',
+  					highlightBackgroundColor: 'blue',
+  					highlightTextColor: 'red',
+  					sections: [{
+    					title: 'Single Video settings',
+    						items: [{
+      						title: 'Resolution',
+    					}, {
+									title: 'Framerate'
+							},{
+									title: 'FOV'
+							}, {
+									title: 'SpotMeter'
+							}, {
+									title: 'Low Light'
+							}, {
+									title: 'Protune'
+							}]
+					  }]
+					});
+						//
+						video_mode_menu.on('select', function(e) {
+    console.log('Selected item #' + e.itemIndex + ' of section #' + e.sectionIndex);
+    console.log('The item is titled "' + e.item.title + '"');
+							switch(e.itemIndex){
+								case 0:
+									//Video resolution
+									var video_res_menu = new UI.Menu();
+									video_res_menu.items(0, [ { title: model }, { title: 'new item2' } ]);
+									video_res_menu.show();
+									break;
+								case 1:
+									//Video framerate
+								case 2:
+									//Video FOV
+								case 3:
+									//Video SM
+								case 4:
+									//Video Low light
+								case 5:
+									//Video protune
+							}
+						});
+					video_single_menu.show();
+				}
+				});
+			video_mode_menu.show();
 		}
 	});
-  menu.show();
+  settings_menu.show();
 });
         }
+			
     }
 };
 xhr.send(null);
+
 }
 
 //command function for HERO4 (/settings!)
 function command_h4(param, value) {
 		var xhr = new XMLHttpRequest();
     xhr.open("GET", "http://10.5.5.9/gp/gpControl/setting/" + param + "/" + value, true);
-		xhr.send(null);
+	xhr.send(null);
 } 
 //command function for HERO4 (modes, etc...)
 function command_h4_modes(main_mode, sub_mode){
@@ -407,7 +484,6 @@ function command_h4_modes(main_mode, sub_mode){
 		xhr.send(null);
 		
 	}
-
 var main_nc = new UI.Card({					
   title: 'NOT CONNECTED',
 	body: 'Please connect the GoPro WiFi to phone!',
@@ -416,6 +492,7 @@ var main_nc = new UI.Card({
 	titleColor: 'white',
 	backgroundColor: 'black'
 });
-Light.trigger();
 main_nc.show();
+
 main_cam();
+
