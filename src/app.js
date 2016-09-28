@@ -7,7 +7,8 @@
 var UI = require('ui');
 var Vibe = require('ui/vibe');
 var Light = require('ui/light');
-
+var Settings = require('settings');
+var isRec=false;
 var main = new UI.Card({
   title: 'Hello People!'
 });
@@ -17,15 +18,15 @@ function command_h4(param, value) {
 		var xhr = new XMLHttpRequest();
     xhr.open("GET", "http://10.5.5.9/gp/gpControl/setting/" + param + "/" + value, true);
 	xhr.send(null);
-} 
+}
 //command function for HERO4 (modes, etc...)
 function command_h4_modes(main_mode, sub_mode){
 		var xhr = new XMLHttpRequest();
-    xhr.open("GET", "http://10.5.5.9/gp/gpControl/command/sub_mode?mode=" + main_mode + "&sub_mode=" + sub_mode, true); 
+    xhr.open("GET", "http://10.5.5.9/gp/gpControl/command/sub_mode?mode=" + main_mode + "&sub_mode=" + sub_mode, true);
 		xhr.send(null);
-		
+
 	}
-var main_nc = new UI.Card({					
+var main_nc = new UI.Card({
   title: 'NOT CONNECTED',
 	body: 'Please connect the GoPro WiFi to phone!',
   subtitleColor: 'indigo', // Named colors
@@ -35,19 +36,12 @@ var main_nc = new UI.Card({
 });
 main_nc.show();
 
-function draw_ui(d_batt, d_mode, d_current_res, d_taken, d_left){
-          main = new UI.Card({					
-					body: 'Batt: ' + d_batt + '\n' + d_mode + '\n' + d_current_res + '\n' + d_taken + ' shots' + '\n' + d_left + ' left',
-  				subtitleColor: 'indigo', 
-  				bodyColor: 'white', 
-					backgroundColor: 'black'
-						
-						
-});
-main.show();
-}
+//some params needed
+
+
 
 function get_data_cam(){
+
 	var xhr = new XMLHttpRequest();
 	xhr.open("GET", "http://10.5.5.9/gp/gpControl/status", true);
 	xhr.timeout = 800;
@@ -56,15 +50,17 @@ function get_data_cam(){
 	var left;
 	var current_res;
 	var taken;
+  var framerate = "";
+  var fov;
 	xhr.onload = function () {
     if (xhr.readyState === xhr.DONE) {
         if (xhr.status === 200) {
 					var obj = JSON.parse(xhr.responseText);
 
-					
+
 					//get camera details
 					switch(obj.status[2]){
-					
+
 						case 3:
 							batt_percent = "FULL";
 							break;
@@ -78,27 +74,41 @@ function get_data_cam(){
 							batt_percent = "LOW!";
 							break;
 						case 4:
-							batt_percent = "PWR";
+							this.batt_percent = "PWR";
 							break;
 					}
 					switch(obj.status[43]){
 						case 0:
 							switch(obj.status[44]){
 								case 0:
-									mode = "Video";
+									mode = "video";
 									break;
 								case 1:
-									mode = "TLVideo";
+									mode = "tlvideo";
 									break;
 								case 2:
-									mode = "VideoPhoto";
+									mode = "dual";
 									break;
 								case 3:
-									mode = "Looping";
+									mode = "looping";
 									break;
 							}
-							left = obj.status[35]/60;
+							left = "";
 							taken = obj.status[39];
+              switch(obj.status[4]){
+								case 0:
+									fov = "W";
+									break;
+								case 1:
+									fov = "M";
+									break;
+								case 2:
+									fov = "N";
+									break;
+                case 3:
+                  fov="L";
+                  break;
+							}
 							switch(obj.settings[2]){
 								case 2:
 									current_res = "4K S";
@@ -136,23 +146,87 @@ function get_data_cam(){
 								case 13:
 									current_res = "WVGA";
 									break;
-															
+
 							}
+              //framerate
+              switch(obj.settings[3]){
+                case 0:
+                  framerate = "240 FPS";
+                  break;
+                case 1:
+                  framerate = "120 FPS";
+                  break;
+                case 2:
+                  framerate = "100 FPS";
+                  break;
+                case 3:
+                  framerate = "90 FPS";
+                  break;
+                case 4:
+                  framerate = "80 FPS";
+                  break;
+                case 5:
+                  framerate = "60 FPS";
+                  break;
+                case 6:
+                  framerate = "50 FPS";
+                  break;
+                case 7:
+                  framerate = "48 FPS";
+                  break;
+                case 8:
+                  framerate = "30 FPS";
+                  break;
+                }
 							break;
 						case 1:
 								switch(obj.status[44]){
 								case 0:
-									mode = "Photo";
+									mode = "photo";
 									break;
 								case 1:
-									mode = "Continuous";
+									mode = "continuous";
+                  switch(obj.settings[18]){
+                    case 0:
+                      framerate = "3/1";
+                      break;
+                    case 1:
+                      framerate = "5/1";
+                      break;
+                    case 2:
+                      framerate = "10/1";
+                      break;
+                  }
 									break;
 								case 2:
-									mode = "NightPhoto";
+									mode = "nightphoto";
+                  switch(obj.settings[19]){
+                    case 0:
+                      framerate = "Auto";
+                      break;
+                    case 1:
+                      framerate = "2 sec";
+                      break;
+                    case 2:
+                      framerate = "5 sec";
+                      break;
+                    case 3:
+                      framerate = "510sec";
+                      break;
+                    case 4:
+                      framerate = "15 sec";
+                      break;
+                    case 5:
+                      framerate = "20 sec";
+                      break;
+                    case 6:
+                      framerate = "30 sec";
+                      break;
+                  }
 									break;
-								
+
 							}
-							left = obj.status[34];
+							left = obj.status[34] + ' left';
 							taken = obj.status[38];
 							switch(obj.settings[17]){
 								case 0:
@@ -168,21 +242,75 @@ function get_data_cam(){
 									current_res = "5MP M/W";
 									break;
 							}
+              fov = "";
 							break;
 						case 2:
 								switch(obj.status[44]){
 								case 0:
-									mode = "Burst";
+									mode = "burst";
+                  switch(obj.settings[29]){
+                    case 0:
+                      framerate = "3/1";
+                      break;
+                    case 1:
+                      framerate = "5/1";
+                      break;
+                    case 2:
+                      framerate = "10/1";
+                      break;
+                    case 3:
+                      framerate = "10/2";
+                      break;
+                    case 4:
+                      framerate = "10/3";
+                      break;
+                    case 5:
+                      framerate = "30/1";
+                      break;
+                    case 6:
+                      framerate = "30/2";
+                      break;
+                    case 7:
+                      framerate = "30/3";
+                      break;
+                    case 8:
+                      framerate = "30/6";
+                      break;
+                  }
 									break;
 								case 1:
-									mode = "Timelapse";
+									mode = "timelapse";
+                  switch(obj.settings[30]){
+                    case 0:
+                      framerate = "0.5sec";
+                      break;
+                    case 1:
+                      framerate = "1sec";
+                      break;
+                    case 2:
+                      framerate = "2sec";
+                      break;
+                    case 5:
+                      framerate = "5sec";
+                      break;
+                    case 10:
+                      framerate = "10sec";
+                      break;
+                    case 30:
+                      framerate = "30sec";
+                      break;
+                    case 60:
+                      framerate = "60sec";
+                      break;
+
+                  }
 									break;
 								case 2:
-									mode = "NightLapse";
+									mode = "nightlapse";
 									break;
 							}
-							left = obj.status[34];
-							taken = obj.status[39];
+              left = obj.status[34] + ' left';
+              taken = obj.status[38];
 							switch(obj.settings[28]){
 								case 0:
 									current_res = "12MP W";
@@ -197,18 +325,24 @@ function get_data_cam(){
 									current_res = "5MP M/W";
 									break;
 							}
+              fov = "";
 							break;
-					}
-										 }
-			
-    }
-};
-xhr.send(null);
-//draw_ui(batt_percent, mode, current_res, taken, left);
-}
-get_data_cam();
 
-main.on('click', 'up', function(e) {
+					}
+					   main = new UI.Card({
+               title: current_res + fov,
+					body: framerate +  '\n' + 'Batt: ' + batt_percent + '\n' + taken + ' shots' + '\n' + left ,
+  				subtitleColor: 'indigo',
+          icon: 'images/' + mode + '_icon.png',
+          titleColor: 'white',
+  				bodyColor: 'white',
+					backgroundColor: 'black'
+
+
+});
+main.show();
+					main.on('click', 'up', function(e) {
+            if(isRec===false){
   var menu = new UI.Menu({
 			title: 'modes',
 			backgroundColor: 'black',
@@ -253,30 +387,34 @@ main.on('click', 'up', function(e) {
 				get_data_cam();
 				video_menu.hide();
 				menu.hide();
+get_data_cam();
 				break;
 			case 1:
 				command_h4_modes('0','1');
 				get_data_cam();
 				video_menu.hide();
 				menu.hide();
+get_data_cam();
 				break;
 			case 2:
 				command_h4_modes('0','2');
 				get_data_cam();
 				video_menu.hide();
 				menu.hide();
+				main.show();
 				break;
 			case 3:
 				command_h4_modes('0','3');
 				get_data_cam();
 				video_menu.hide();
 				menu.hide();
+get_data_cam();
 				break;
 		}
   });
   video_menu.show();
 	}
-	
+
 	//Photo menu
 	if(e.itemIndex == 1){
 		var photo_menu = new UI.Menu({
@@ -300,16 +438,19 @@ main.on('click', 'up', function(e) {
 				command_h4_modes('1','0');
 				photo_menu.hide();
 				menu.hide();
+        get_data_cam();
 				break;
 			case 1:
 				command_h4_modes('1','1');
 				photo_menu.hide();
 				menu.hide();
+        get_data_cam();
 				break;
 			case 2:
 				command_h4_modes('1','2');
 				photo_menu.hide();
 				menu.hide();
+        get_data_cam();
 				break;
 		}
   });
@@ -337,17 +478,20 @@ main.on('click', 'up', function(e) {
 			case 0:
 				command_h4_modes('2','0');
 			  ms_menu.hide();
-				menu.hide();	
+				menu.hide();
+        get_data_cam();
 				break;
 			case 1:
 				command_h4_modes('2','1');
 				ms_menu.hide();
 				menu.hide();
+        get_data_cam();
 				break;
 			case 2:
 				command_h4_modes('2','2');
 				ms_menu.hide();
 				menu.hide();
+        get_data_cam();
 				break;
 		}
   });
@@ -355,6 +499,7 @@ main.on('click', 'up', function(e) {
 	}
   });
   menu.show();
+}
 });
 
 main.on('click', 'select', function(e) {
@@ -366,25 +511,27 @@ main.on('click', 'select', function(e) {
     if (xhr.readyState === xhr.DONE) {
         if (xhr.status === 200) {
 					var obj = JSON.parse(xhr.responseText);
-					
+
 					//get camera rec status
 					var xhr2 = new XMLHttpRequest();
 					switch(obj.status[8]){
 						case 0:
 							//record
-   			  		xhr2.open("GET", "http://10.5.5.9/gp/gpControl/command/shutter?p=1", true);        
-							xhr2.send(null);	
+   			  		xhr2.open("GET", "http://10.5.5.9/gp/gpControl/command/shutter?p=1", true);
+							xhr2.send(null);
 							Vibe.vibrate('double');
 							if(obj.status[43] === 0){
-								main.backgroundColor('red');	
+								main.backgroundColor('red');
+                isRec=true;
 							}
 							break;
 						case 1:
 							//stop
-   			  		xhr2.open("GET", "http://10.5.5.9/gp/gpControl/command/shutter?p=0", true);        
-							xhr2.send(null);	
+   			  		xhr2.open("GET", "http://10.5.5.9/gp/gpControl/command/shutter?p=0", true);
+							xhr2.send(null);
 							Vibe.vibrate('short');
 							main.backgroundColor('black');
+              isRec=false;
 							break;
 					}
 				}
@@ -393,6 +540,7 @@ main.on('click', 'select', function(e) {
 	xhr.send(null);
 });
 main.on('click', 'down', function(e){
+  if(isRec===false){
     var settings_menu = new UI.Menu({
 			title: 'settings',
 			backgroundColor: 'black',
@@ -402,138 +550,91 @@ main.on('click', 'down', function(e){
     sections: [{
 			title: 'settings',
       items: [{
-        title: 'VIDEO',
+        title: 'Action',
       },{
-        title: 'PHOTO',
+        title: 'Indoor',
       }, {
-        title: 'MULTISHOT',
+        title: 'Slow-Mo',
       }, {
-        title: 'MISC',
+        title: 'Cinematic',
       }]
     }]
   });
   settings_menu.on('select', function(e) {
-    console.log('Selected item #' + e.itemIndex + ' of section #' + e.sectionIndex);
-    console.log('The item is titled "' + e.item.title + '"');
-  	if(e.itemIndex === 0){
-			var video_mode_menu = new UI.Menu({
-  		backgroundColor: 'black',
-  		textColor: 'white',
-  		highlightBackgroundColor: 'blue',
-  		highlightTextColor: 'white',
-  		sections: [{
-    		title: 'Video modes',
-    			items: [{
-      			title: 'Video',
-    		}, {
-						title: 'TL Video'
-				},{
-						title: 'Video+Photo'
-				}, {
-						title: 'Looping'
-				}]
-  }]
-});
-			video_mode_menu.on('select', function(e) {
-    console.log('Selected item #' + e.itemIndex + ' of section #' + e.sectionIndex);
-    console.log('The item is titled "' + e.item.title + '"');
-				switch(e.itemIndex){
-					case 0:
-						var video_single_menu = new UI.Menu({
-  					backgroundColor: 'black',
-  					textColor: 'white',
-  					highlightBackgroundColor: 'blue',
-  					highlightTextColor: 'white',
-  					sections: [{
-    					title: 'Single Video settings',
-    						items: [{
-      						title: 'Resolution',
-    					}, {
-									title: 'Framerate'
-							},{
-									title: 'FOV'
-							}, {
-									title: 'SpotMeter'
-							}, {
-									title: 'Low Light'
-							}, {
-									title: 'Protune'
-							}]
-					  }]
-					});
-						//
-						video_mode_menu.on('select', function(e) {
-    console.log('Selected item #' + e.itemIndex + ' of section #' + e.sectionIndex);
-    console.log('The item is titled "' + e.item.title + '"');
-							switch(e.itemIndex){
-								case 0:
-									//Video resolution
-									var video_res_menu = new UI.Menu();
-									video_res_menu.items(0, [ { title: '4K' }, 
-																					 { title: '2.7K' }, 
-																					 { title: '2.7K S' }, 
-																					 { title: '1440p' }, 
-																					 { title: '1080p' }, 
-																					 { title: '1080p S' }, 
-																					 { title: '960p' },  
-																					 { title: '720p' }]);
-									video_res_menu.show();
-									break;
-								case 1:
-									//Video framerate
-									var video_fr_menu = new UI.Menu();
-									video_fr_menu.items(0, [ { title: '12' }, 
-																					 { title: '25' }, 
-																					 { title: '30' }, 
-																					 { title: '48' }, 
-																					 { title: '60' }, 
-																					 { title: '90' }, 
-																					 { title: '120' },  
-																					 { title: '240' }]);
-									video_fr_menu.show();
-									break;
-								case 2:
-									//Video FOV
-								  var video_fov_menu = new UI.Menu();
-									video_fov_menu.items(0, [ { title: 'WIDE' }, 
-																					 { title: 'MEDIUM' }, 
-																					 { title: 'NARROW' }]);
-									video_fov_menu.show();
-									break;
-								case 3:
-									//Video SM
-									var video_sm_menu = new UI.Menu();
-									video_sm_menu.items(0, [ { title: 'ON' }, 
-																					 { title: 'OFF' }]);
-									video_sm_menu.show();
-									break;
-								case 4:
-									//Video Low light
-									 var video_lowlight_menu = new UI.Menu();
-									video_lowlight_menu.items(0, [ { title: 'ON' }, 
-																					 { title: 'OFF' }, 
-																					 { title: 'NARROW' }]);
-									video_lowlight_menu.show();
-									break;
-								case 5:
-									//Video protune
-									 var video_pt_menu = new UI.Menu();
-									video_pt_menu.items(0, [ { title: 'Protune' }, 
-																					 { title: 'White Balance' }, 
-																					 { title: 'Color' },
-																					 { title: 'ISO' },
-																				   { title: 'Sharpness' },
-																					 { title: 'EV compensation' },]);
-									video_pt_menu.show();
-									break;
-							}
-						});
-					video_single_menu.show();
-				}
-				});
-			video_mode_menu.show();
-		}
+    switch(e.itemIndex){
+      case 0:
+        //Action
+        command_h4(2,9);
+        command_h4(3,5);
+        command_h4(4,0);
+				break;
+      case 1:
+        //Indoor
+        command_h4(2,9);
+        command_h4(3,8);
+				break;
+      case 2:
+        //Slow-Mo
+        command_h4(2,9);
+        command_h4(3,1);
+				break;
+      case 3:
+        //Cinematic
+        command_h4(2,1);
+				break;
+    }
+
 	});
   settings_menu.show();
+}
 });
-       
+main.on('click', 'back', function() {
+  console.log('Up clicked!');
+});
+
+//HiLight Tag:
+main.on('longClick', 'up', function() {
+  var xhr = new XMLHttpRequest();
+
+xhr.open("GET", "http://10.5.5.9/gp/gpControl/status", true);
+xhr.timeout = 800;
+xhr.onload = function () {
+if (xhr.readyState === xhr.DONE) {
+    if (xhr.status === 200) {
+  	var xhr2 = new XMLHttpRequest();
+    var obj = JSON.parse(xhr.responseText);
+    switch(obj.status[8]){
+      case 0:
+        command_h4_modes('1','0');
+        setTimeout(function(){
+          //shoot pic
+          xhr2.open("GET", "http://10.5.5.9/gp/gpControl/command/shutter?p=1", true);
+          xhr2.send(null);
+        }, 2000);
+
+        Vibe.vibrate('long');
+				break;
+      case 1:
+        xhr2.open("GET", "http://10.5.5.9/gp/gpControl/command/storage/tag_moment", true);
+        xhr2.send(null);
+        Vibe.vibrate('long');
+				break;
+}
+}
+}
+
+};
+xhr.send(null);
+});
+
+}
+		}
+	};
+		xhr.send(null);
+
+
+
+	}
+
+
+		get_data_cam();

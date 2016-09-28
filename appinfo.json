@@ -1,53 +1,94 @@
 {
-    "appKeys": {},
-    "capabilities": [
-        ""
-    ],
-    "companyName": "Konrad Iturbe",
-    "longName": "GoPro Remote",
-    "projectType": "pebblejs",
-    "resources": {
-        "media": [
-            {
-                "file": "images/menu_icon.png",
-                "name": "IMAGE_MENU_ICON",
-                "type": "bitmap"
-            },
-            {
-                "file": "images/logo_splash.png",
-                "name": "IMAGE_LOGO_SPLASH",
-                "type": "bitmap"
-            },
-            {
-                "file": "images/tile_splash.png",
-                "name": "IMAGE_TILE_SPLASH",
-                "type": "bitmap"
-            },
-            {
-                "file": "fonts/UbuntuMono-Regular.ttf",
-                "name": "MONO_FONT_14",
-                "type": "font"
-            },
-            {
-                "file": "images/pebble_icon",
-                "menuIcon": true,
-                "name": "IMAGES_PEBBLE_ICON",
-                "type": "png"
-            }
-        ]
-    },
-    "sdkVersion": "3",
-    "shortName": "CamControl GP",
-    "targetPlatforms": [
-        "aplite",
-        "basalt",
-        "chalk"
-    ],
-    "uuid": "13c13cc7-9176-42f8-8715-f12d5a726993",
-    "versionCode": 1,
-    "versionLabel": "1.0",
-    "watchapp": {
-        "hiddenApp": false,
-        "watchface": false
-    }
+  "appKeys": {},
+  "capabilities": [],
+  "companyName": "Konrad Iturbe",
+  "longName": "GoPro Remote",
+  "resources": {
+    "media": [
+      {
+        "file": "images/app_icon.png",
+        "menuIcon": true,
+        "name": "IMAGES_APP_ICON",
+        "type": "png"
+      },
+      {
+        "file": "images/video_icon.png",
+        "name": "ICON_VIDEO_SIMPLE",
+        "type": "bitmap"
+      },
+      {
+        "file": "images/tlvideo_icon.png",
+        "name": "ICON_VIDEO_TL",
+        "type": "bitmap"
+      },
+      {
+        "file": "images/looping_icon.png",
+        "name": "ICON_VIDEO_LOOPING",
+        "type": "bitmap"
+      },
+      {
+        "file": "images/dual_icon.png",
+        "name": "ICON_VIDEO_DUAL",
+        "type": "bitmap"
+      },
+      {
+        "file": "images/photo_icon.png",
+        "name": "ICON_PHOTO_SIMPLE",
+        "type": "bitmap"
+      },
+      {
+        "file": "images/continuous_icon.png",
+        "name": "ICON_PHOTO_CONTINUOUS",
+        "type": "bitmap"
+      },
+      {
+        "file": "images/nightphoto_icon.png",
+        "name": "ICON_PHOTO_NIGHTPHOTO",
+        "type": "bitmap"
+      },
+      {
+        "file": "images/timelapse_icon.png",
+        "name": "ICON_MS_TIMELAPSE",
+        "type": "bitmap"
+      },
+      {
+        "file": "images/burst_icon.png",
+        "name": "ICON_MS_BURST",
+        "type": "bitmap"
+      },
+      {
+        "file": "images/nightlapse_icon.png",
+        "name": "ICON_MS_NL",
+        "type": "bitmap"
+      },
+      {
+        "file": "images/logo_splash.png",
+        "name": "IMAGE_LOGO_SPLASH",
+        "type": "bitmap"
+      },
+      {
+        "file": "images/tile_splash.png",
+        "name": "IMAGE_TILE_SPLASH",
+        "type": "bitmap"
+      },
+      {
+        "file": "fonts/UbuntuMono-Regular.ttf",
+        "name": "MONO_FONT_14",
+        "type": "font"
+      }
+    ]
+  },
+  "sdkVersion": "3",
+  "shortName": "GoPro",
+  "targetPlatforms": [
+    "aplite",
+    "basalt",
+    "chalk"
+  ],
+  "uuid": "133215f0-cf20-4c05-997b-3c9be5a64e5b",
+  "versionCode": 1,
+  "versionLabel": "0.4",
+  "watchapp": {
+    "watchface": false
+  }
 }
