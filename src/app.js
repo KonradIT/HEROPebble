@@ -74,7 +74,7 @@ function get_data_cam(){
 							batt_percent = "LOW!";
 							break;
 						case 4:
-							this.batt_percent = "PWR";
+						  batt_percent = "PWR";
 							break;
 					}
 					switch(obj.status[43]){

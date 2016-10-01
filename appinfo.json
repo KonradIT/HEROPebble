@@ -9,7 +9,7 @@
         "file": "images/app_icon.png",
         "menuIcon": true,
         "name": "IMAGES_APP_ICON",
-        "type": "png"
+        "type": "bitmap"
       },
       {
         "file": "images/video_icon.png",
@@ -85,9 +85,9 @@
     "basalt",
     "chalk"
   ],
-  "uuid": "133215f0-cf20-4c05-997b-3c9be5a64e5b",
+  "uuid": "f9963dc0-430a-4ee7-8814-ee4ab4bd9206",
   "versionCode": 1,
-  "versionLabel": "0.4",
+  "versionLabel": "0.6",
   "watchapp": {
     "watchface": false
   }
