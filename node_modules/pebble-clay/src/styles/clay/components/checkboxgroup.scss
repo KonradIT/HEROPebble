@@ -1,0 +1,70 @@
+@import "bourbon";
+@import "clay";
+
+.component-checkbox {
+
+  display: block;
+
+  .section & {
+    padding-right: $item-spacing-h / 2;
+  }
+
+  > .label {
+    display: block;
+    padding-bottom: $item-spacing-v / 2;
+  }
+
+  .checkbox-group {
+
+    padding-bottom: $item-spacing-v / 2;
+
+    label {
+      padding: $item-spacing-v / 2 $item-spacing-h / 2;
+    }
+
+    .label {
+      font-size: 0.9em;
+    }
+
+    input {
+      opacity: 0;
+      position: absolute;
+    }
+
+    i {
+      display: block;
+      position: relative;
+      border-radius: $border-radius;
+      width: $base-height;
+      height: $base-height;
+      border: rem(2px) solid $color-gray-7;
+      flex-shrink: 0;
+    }
+
+    input:checked + i {
+      border-color: $color-orange;
+      background: $color-orange;
+      
+      &:after {
+        content: '';
+        box-sizing: border-box;
+        transform: rotate(45deg);
+        position: absolute;
+        left: 0.35rem;
+        top: -0.05rem;
+        display: block;
+        width: 0.5rem;
+        height: 1rem;
+        border: 0 solid $color-white;
+        border-right-width: rem(2px);
+        border-bottom-width: rem(2px);
+
+      }
+    }
+  }
+
+  .description {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}

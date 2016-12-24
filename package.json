@@ -1,0 +1,112 @@
+{
+  "name": "GoPro",
+  "author": "Konrad Iturbe",
+  "version": "1.0.0",
+  "keywords": [
+    "pebble-app"
+  ],
+  "private": true,
+  "dependencies": {
+    "pebble-clay": "^1.0.4",
+    "pebblejs": "^1.0.0"
+  },
+  "pebble": {
+    "displayName": "GoPro",
+    "uuid": "f9963dc0-430a-4ee7-8814-ee4ab4bd9206",
+    "sdkVersion": "3",
+    "enableMultiJS": true,
+    "targetPlatforms": [
+      "aplite",
+      "basalt",
+      "chalk",
+      "diorite"
+    ],
+    "watchapp": {
+      "watchface": false
+    },
+    "messageKeys": [
+      "MESSAGE_KEY_simplemode",
+      "MESSAGE_KEY_refreshrate"
+    ],
+    "resources": {
+      "media": [
+        {
+          "file": "images/app_icon.png",
+          "menuIcon": true,
+          "name": "IMAGES_APP_ICON",
+          "type": "bitmap"
+        },
+        {
+          "file": "images/video_icon.png",
+          "name": "ICON_VIDEO_SIMPLE",
+          "type": "bitmap"
+        },
+        {
+          "file": "images/settings_icon.png",
+          "name": "ICON_SETTINGS",
+          "type": "bitmap"
+        },
+        {
+          "file": "images/tlvideo_icon.png",
+          "name": "ICON_VIDEO_TL",
+          "type": "bitmap"
+        },
+        {
+          "file": "images/looping_icon.png",
+          "name": "ICON_VIDEO_LOOPING",
+          "type": "bitmap"
+        },
+        {
+          "file": "images/dual_icon.png",
+          "name": "ICON_VIDEO_DUAL",
+          "type": "bitmap"
+        },
+        {
+          "file": "images/photo_icon.png",
+          "name": "ICON_PHOTO_SIMPLE",
+          "type": "bitmap"
+        },
+        {
+          "file": "images/continuous_icon.png",
+          "name": "ICON_PHOTO_CONTINUOUS",
+          "type": "bitmap"
+        },
+        {
+          "file": "images/nightphoto_icon.png",
+          "name": "ICON_PHOTO_NIGHTPHOTO",
+          "type": "bitmap"
+        },
+        {
+          "file": "images/timelapse_icon.png",
+          "name": "ICON_MS_TIMELAPSE",
+          "type": "bitmap"
+        },
+        {
+          "file": "images/burst_icon.png",
+          "name": "ICON_MS_BURST",
+          "type": "bitmap"
+        },
+        {
+          "file": "images/nightlapse_icon.png",
+          "name": "ICON_MS_NL",
+          "type": "bitmap"
+        },
+        {
+          "file": "images/logo_splash.png",
+          "name": "IMAGE_LOGO_SPLASH",
+          "type": "bitmap"
+        },
+        {
+          "file": "images/tile_splash.png",
+          "name": "IMAGE_TILE_SPLASH",
+          "type": "bitmap"
+        },
+        {
+          "file": "fonts/UbuntuMono-Regular.ttf",
+          "name": "MONO_FONT_14",
+          "type": "font"
+        }
+      ]
+    }
+  }
+}

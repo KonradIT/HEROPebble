@@ -1,0 +1,35 @@
+[
+  {
+    "type": "heading",
+    "defaultValue": "GoPro Config"
+  },
+  {
+    "type": "text",
+    "defaultValue": "Simple Mode: (Disables status refresh)"
+  },
+  {
+  "type": "toggle",
+  "messageKey": "simplemode",
+  "label": "Simple Mode",
+  "defaultValue": false
+},
+{
+  "type": "text",
+  "defaultValue": "Refresh Rate"
+},
+{
+  "type": "input",
+  "messageKey": "refreshrate",
+  "defaultValue": "",
+  "label": "Refresh Rate",
+  "attributes": {
+    "placeholder": "5",
+    "limit": 10,
+    "type": "number"
+  }
+},
+{
+  "type": "submit",
+  "defaultValue": "Save"
+}
+]
