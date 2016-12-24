@@ -279,7 +279,6 @@
 	    if (isHero4online === true) {
 	
 	        xhr.open("GET", "http://10.5.5.9/gp/gpControl/status", true);
-	        xhr.timeout = 200;
 	        xhr.onload = function() {
 	            if (xhr.readyState === xhr.DONE) {
 	                if (xhr.status === 200) {
@@ -372,42 +371,16 @@
 	*/
 	//HiLight Tag:
 	main.on('longClick', 'up', function() {
-	
-	    xhr.open("GET", "http://10.5.5.9/gp/gpControl/status", true);
-	    xhr.timeout = 200;
-	    xhr.onload = function() {
-	        if (xhr.readyState === xhr.DONE) {
-	            if (xhr.status === 200) {
-	                var obj = JSON.parse(xhr.responseText);
-	                switch (obj.status[8]) {
-	                    case 0:
-	                        command_h4_modes('1', '0');
-	                        setTimeout(function() {
-	                            //shoot pic
-	                            xhr.open("GET", "http://10.5.5.9/gp/gpControl/command/shutter?p=1", true);
-	                            xhr.send(null);
-	                        }, 2000);
-	
-	                        Vibe.vibrate('long');
-	                        break;
-	                    case 1:
-	                        xhr.open("GET", "http://10.5.5.9/gp/gpControl/command/storage/tag_moment", true);
-	                        xhr.send(null);
-	                        Vibe.vibrate('long');
-	                        break;
-	                }
-	            }
-	        }
-	
-	    };
-	    xhr.send(null);
+	  xhr.open("GET", "http://10.5.5.9/gp/gpControl/command/storage/tag_moment", true);
+	  xhr.send(null);
+	  Vibe.vibrate('long');
 	});
 	
 	function get_data_cam() {
-	  if (!keys.simplemode) {
+	
 	
 	    xhr.open("GET", "http://10.5.5.9/gp/gpControl", true);
-	    xhr.timeout = 200;
+	
 	    xhr.onload = function() {
 	        if (xhr.readyState === xhr.DONE) {
 	            if (xhr.status === 200) {
@@ -422,7 +395,7 @@
 	                var framerate = "";
 	                var fov;
 	                xhr.open("GET", "http://10.5.5.9/gp/gpControl/status", true);
-	                xhr.timeout = 200;
+	
 	
 	                xhr.onload = function() {
 	                    if (xhr.readyState === xhr.DONE) {
@@ -754,6 +727,7 @@
 	    };
 	
 	    xhr.send(null);
+	      if (!keys.simplemode) {
 	    setTimeout(get_data_cam, 2000);
 	  } else {
 	      main.title("Simple Mode");
@@ -780,7 +754,7 @@
 	function get_h3_cam() {
 	
 	    xhr.open("GET", "http://10.5.5.9/camera/cv", true);
-	    xhr.timeout = 200;
+	
 	    xhr.onload = function() {
 	        if (xhr.readyState === xhr.DONE) {
 	            if (xhr.status === 200) {
@@ -800,7 +774,7 @@
 	                }
 	                var gopropassword = "hello";
 	                xhr.open("GET", "http://10.5.5.9/bacpac/sd", true);
-	                xhr.timeout = 200;
+	
 	                xhr.onload = function() {
 	                    if (xhr.readyState === xhr.DONE) {
 	                        if (xhr.status === 200) {
@@ -887,26 +861,15 @@
 	};
 	
 	xhr.open("GET", "http://10.5.5.9/camera/cv", true);
-	xhr.timeout = 200;
 	xhr.onload = function() {
 	    if (xhr.readyState === xhr.DONE) {
 	        if (xhr.status === 200) {
-	            var camName = "no camera";
 	            var dump = xhr.responseText;
 	            if (dump.indexOf("HD3.1") != -1) {
-	                camName = "HERO3";
 	                //Detects HERO3/3+ (2014 and 2013) Cameras
 	                get_h3_cam();
 	            } else {
-	                if (dump.indexOf("HD3.2") != -1) {
-	                    camName = "HERO+";
-	                    //Detects HERO+ Cameras
-	                    get_data_cam();
-	                } else {
-	
-	                    //HERO4 and HERO5 use the same API calls. HERO5 does not put a response in /camera/cv, HERO4 is HD4, HERO5 is HD5. Cameras include HERO4 Black, Silver, Session. Also HERO5 Black and Session.
-	                    get_data_cam();
-	                }
+	                get_data_cam();
 	            }
 	
 	
