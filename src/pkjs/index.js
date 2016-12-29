@@ -291,9 +291,35 @@ console.log('Up clicked!');
 */
 //HiLight Tag:
 main.on('longClick', 'up', function() {
-  xhr.open("GET", "http://10.5.5.9/gp/gpControl/command/storage/tag_moment", true);
-  xhr.send(null);
-  Vibe.vibrate('long');
+
+    xhr.open("GET", "http://10.5.5.9/gp/gpControl/status", true);
+
+    xhr.onload = function() {
+        if (xhr.readyState === xhr.DONE) {
+            if (xhr.status === 200) {
+                var obj = JSON.parse(xhr.responseText);
+                switch (obj.status[8]) {
+                    case 0:
+                        command_h4_modes('1', '0');
+                        setTimeout(function() {
+                            //shoot pic
+                            xhr.open("GET", "http://10.5.5.9/gp/gpControl/command/shutter?p=1", true);
+                            xhr.send(null);
+                        }, 2000);
+
+                        Vibe.vibrate('long');
+                        break;
+                    case 1:
+                        xhr.open("GET", "http://10.5.5.9/gp/gpControl/command/storage/tag_moment", true);
+                        xhr.send(null);
+                        Vibe.vibrate('long');
+                        break;
+                }
+            }
+        }
+
+    };
+    xhr.send(null);
 });
 
 function get_data_cam() {
@@ -788,12 +814,32 @@ xhr.onload = function() {
             if (dump.indexOf("HD3.1") != -1) {
                 //Detects HERO3/3+ (2014 and 2013) Cameras
                 get_h3_cam();
-            } else {
+            }
+            else{
+              if (dump.indexOf("HD3.2") != -1) {
+                  //Detects HERO+ cameras
+                  get_data_cam();
+              }
+            }
+            if (dump.indexOf("HERO4") != -1){
+              get_data_cam()
+            }
+        }
+    }
+};
+
+//Further detection
+xhr.open("GET", "http://10.5.5.9/gp/gpControl/info", true);
+xhr.onload = function() {
+    if (xhr.readyState === xhr.DONE) {
+        if (xhr.status === 200) {
+            var dump = xhr.responseText;
+            if (dump.indexOf("HD5") != -1) {
                 get_data_cam();
             }
-
-
-
+            if (dump.indexOf("HERO4") != -1) {
+                get_data_cam();
+            }
         }
     }
 };
