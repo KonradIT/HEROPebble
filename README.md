@@ -22,4 +22,6 @@ https://apps.getpebble.com/applications/57ef907a05e4b17e1c000186
 
 ##Tutorial:
 
-https://vimeo.com/195210890
+HERO4 Black, Silver / HERO5 Black: https://vimeo.com/195210890
+
+HERO4 Session / HERO5 Session: https://vimeo.com/197495311
