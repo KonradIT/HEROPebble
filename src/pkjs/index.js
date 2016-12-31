@@ -12,6 +12,8 @@ var isHero4online = false;
 var xhr = new XMLHttpRequest();
 var presets = "";
 var MasterSimpleMode = false;
+var camera_number = "";
+var camera_model_name = "";
 //command function for HERO4 (/settings!)
 function command_h4(param, value) {
     xhr.open("GET", "http://10.5.5.9/gp/gpControl/setting/" + param + "/" + value, true);
@@ -71,34 +73,49 @@ main.on('click', 'up', function(e) {
                         sections: [{
                             items: [{
                                 title: 'Single',
-                            }, {
-                                title: 'TLVideo',
-                            }, {
-                                title: 'VideoPhoto',
-                            }, {
+                            },{
                                 title: 'Looping',
                             }]
                         }]
                     });
+                    if(camera_number != 16){
+
+                      ms_menu.item(0, 2, { title: 'TLVideo' });
+                      ms_menu.item(0, 3, { title: 'VideoPhoto' });
+                    }
+                    if(camera_number != 17){
+
+                      ms_menu.item(0, 2, { title: 'TLVideo' });
+                      ms_menu.item(0, 3, { title: 'VideoPhoto' });
+                    }
+                    if(camera_number != 15){
+
+                      ms_menu.item(0, 2, { title: 'TLVideo' });
+                      ms_menu.item(0, 3, { title: 'VideoPhoto' });
+                    }
                     video_menu.on('select', function(video_menu_selection) {
                         switch (video_menu_selection.itemIndex) {
                             case 0:
+                                //single
                                 command_h4_modes('0', '0');
                                 video_menu.hide();
                                 menu.hide();
                                 break;
                             case 1:
-                                command_h4_modes('0', '1');
+                                //looping
+                                command_h4_modes('0', '3');
                                 video_menu.hide();
                                 menu.hide();
                                 break;
                             case 2:
-                                command_h4_modes('0', '2');
+                                //TLVideo
+                                command_h4_modes('0', '1');
                                 video_menu.hide();
                                 menu.hide();
                                 break;
                             case 3:
-                                command_h4_modes('0', '3');
+                                //VideoPhoto
+                                command_h4_modes('0', '2');
                                 video_menu.hide();
                                 menu.hide();
                                 break;
@@ -117,13 +134,19 @@ main.on('click', 'up', function(e) {
                         sections: [{
                             items: [{
                                 title: 'Single',
-                            }, {
-                                title: 'Continuous',
-                            }, {
-                                title: 'Night',
                             }]
                         }]
                     });
+                    if(camera_number != 15){
+                      photo_menu.item(0, 1, { title: 'Continuous' });
+                    }
+                    if(camera_number != 17){
+                      photo_menu.item(0, 1, { title: 'Continuous' });
+                    }
+                    if(camera_number != 16){
+                      photo_menu.item(0, 1, { title: 'Continuous' });
+                      photo_menu.item(0, 2, { title: 'Night' });
+                    }
                     photo_menu.on('select', function(photo_menu_selection) {
                         switch (photo_menu_selection.itemIndex) {
                             case 0:
@@ -156,15 +179,16 @@ main.on('click', 'up', function(e) {
                         highlightBackgroundColor: 'white',
                         highlightTextColor: 'black',
                         sections: [{
-                            items: [{
-                                title: 'Burst',
-                            }, {
-                                title: 'TimeLapse',
-                            }, {
-                                title: 'NightLapse',
-                            }]
+                          items: [{
+                            title: 'Burst'
+                          }, {
+                            title: 'TimeLapse'
+                          }]
                         }]
                     });
+                    if(camera_number != 16){
+                      ms_menu.item(0, 2, { title: 'NightLapse' });
+                    }
                     ms_menu.on('select', function(photo_menu_selection) {
                         switch (photo_menu_selection.itemIndex) {
                             case 0:
@@ -221,10 +245,12 @@ main.on('click', 'select', function(e) {
                                   Vibe.vibrate('short');
                                   break;
                           }
+													break;
                         case 1:
                           xhr.open("GET", "http://10.5.5.9/gp/gpControl/command/shutter?p=1", true);
                           xhr.send(null);
                           Vibe.vibrate('double');
+													break;
                   }
                 }
             }
@@ -331,8 +357,8 @@ function get_data_cam() {
         if (xhr.readyState === xhr.DONE) {
             if (xhr.status === 200) {
                 var obj = JSON.parse(xhr.responseText);
-                var camera = obj.info.model_number;
-                var camera2 = obj.info.model_name;
+                camera_number = obj.info.model_number;
+                camera_model_name = obj.info.model_name;
                 var batt_percent;
                 var mode;
                 var left;
@@ -822,7 +848,7 @@ xhr.onload = function() {
               }
             }
             if (dump.indexOf("HERO4") != -1){
-              get_data_cam()
+              get_data_cam();
             }
         }
     }
