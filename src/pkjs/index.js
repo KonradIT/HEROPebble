@@ -14,6 +14,8 @@ var presets = "";
 var MasterSimpleMode = false;
 var camera_number = "";
 var camera_model_name = "";
+var h3Pass="nothing";
+var HERO3=false;
 //command function for HERO4 (/settings!)
 function command_h4(param, value) {
     xhr.open("GET", "http://10.5.5.9/gp/gpControl/setting/" + param + "/" + value, true);
@@ -27,7 +29,7 @@ function command_h4_modes(main_mode, sub_mode) {
 }
 
 function command_h3(device, param, gopropass, option) {
-    xhr.open("GET", "http://10.5.5.9/" + device + "/" + param + "?t=" + gopropass + "&p=%" + option, true);
+    xhr.open("GET", "http://10.5.5.9/" + device + "/" + param + "?t=" + gopropass + "&p=%" + option, false);
     xhr.send(null);
 
 }
@@ -80,18 +82,18 @@ main.on('click', 'up', function(e) {
                     });
                     if(camera_number != 16){
 
-                      ms_menu.item(0, 2, { title: 'TLVideo' });
-                      ms_menu.item(0, 3, { title: 'VideoPhoto' });
+                      video_menu.item(0, 2, { title: 'TLVideo' });
+                      video_menu.item(0, 3, { title: 'VideoPhoto' });
                     }
                     if(camera_number != 17){
 
-                      ms_menu.item(0, 2, { title: 'TLVideo' });
-                      ms_menu.item(0, 3, { title: 'VideoPhoto' });
+                      video_menu.item(0, 2, { title: 'TLVideo' });
+                      video_menu.item(0, 3, { title: 'VideoPhoto' });
                     }
                     if(camera_number != 15){
 
-                      ms_menu.item(0, 2, { title: 'TLVideo' });
-                      ms_menu.item(0, 3, { title: 'VideoPhoto' });
+                      video_menu.item(0, 2, { title: 'TLVideo' });
+                      video_menu.item(0, 3, { title: 'VideoPhoto' });
                     }
                     video_menu.on('select', function(video_menu_selection) {
                         switch (video_menu_selection.itemIndex) {
@@ -751,7 +753,7 @@ function get_h3_cam() {
                     if (xhr.readyState === xhr.DONE) {
                         if (xhr.status === 200) {
                             gopropassword = xhr.responseText.cleanup();
-
+                            h3Pass=gopropassword;
 
                             var data = "";
                             //screendata
@@ -790,19 +792,23 @@ function get_h3_cam() {
                                     console.log('The item is titled "' + e.item.title + '"');
                                     switch (e.itemIndex) {
                                         case 0:
-                                            command_h3("camera", "CM", gopropassword, "00");
+                                          xhr.open("GET", "http://10.5.5.9/camera/CM?t=" + gopropassword + "&p=%00", true);
+                                          xhr.send(null);
                                             menu.hide();
                                             break;
                                         case 1:
-                                            command_h3("camera", "CM", gopropassword, "01");
+                                          xhr.open("GET", "http://10.5.5.9/camera/CM?t=" + gopropassword + "&p=%01", true);
+                                          xhr.send(null);
                                             menu.hide();
                                             break;
                                         case 2:
-                                            command_h3("camera", "CM", gopropassword, "02");
+                                          xhr.open("GET", "http://10.5.5.9/camera/CM?t=" + h3Pass + "&p=%02", true);
+                                          xhr.send(null);
                                             menu.hide();
                                             break;
                                         case 3:
-                                            command_h3("camera", "CM", gopropassword, "03");
+                                          xhr.open("GET", "http://10.5.5.9/camera/CM?t=" + h3Pass + "&p=%03", true);
+                                          xhr.send(null);
                                             menu.hide();
                                             break;
                                     }
@@ -811,10 +817,12 @@ function get_h3_cam() {
                                 menu.show();
                             });
                             main_h3.on('click', 'select', function(e) {
-                                command_h3("bacpac", "SH", gopropassword, "01");
+                              xhr.open("GET", "http://10.5.5.9/bacpac/SH?t=" + h3Pass + "&p=%01", true);
+                              xhr.send(null);
                             });
                             main_h3.on('click', 'down', function(e) {
-                                command_h3("bacpac", "SH", gopropassword, "00");
+                              xhr.open("GET", "http://10.5.5.9/bacpac/SH?t=" + h3Pass + "&p=%00", true);
+                              xhr.send(null);
                             });
                             main_h3.show();
                         }
@@ -841,6 +849,7 @@ xhr.onload = function() {
             if (dump.indexOf("Hero3") != -1) {
                 //Detects HERO3/3+ (2014 and 2013) Cameras
                 get_h3_cam();
+                HERO3=true;
             }
             else{
               //Further detection
@@ -876,4 +885,21 @@ xhr.onload = function() {
 xhr.send(null);
 
 
-Light.on();
+//HERO5 detection
+if(HERO3==False){
+xhr.open("GET", "http://10.5.5.9/gp/gpControl/info", true);
+xhr.onload = function() {
+    if (xhr.readyState === xhr.DONE) {
+        if (xhr.status === 200) {
+            var dump = xhr.responseText;
+            if (dump.indexOf("HD5") != -1) {
+                get_data_cam();
+            }
+            if (dump.indexOf("HERO4") != -1) {
+                get_data_cam();
+            }
+        }
+    }
+};
+xhr.send(null);
+}
