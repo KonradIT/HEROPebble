@@ -14,8 +14,8 @@ var presets = "";
 var MasterSimpleMode = false;
 var camera_number = "";
 var camera_model_name = "";
-var h3Pass="nothing";
-var HERO3=false;
+var h3Pass = "nothing";
+var HERO3 = false;
 //command function for HERO4 (/settings!)
 function command_h4(param, value) {
     xhr.open("GET", "http://10.5.5.9/gp/gpControl/setting/" + param + "/" + value, true);
@@ -75,25 +75,37 @@ main.on('click', 'up', function(e) {
                         sections: [{
                             items: [{
                                 title: 'Single',
-                            },{
+                            }, {
                                 title: 'Looping',
                             }]
                         }]
                     });
-                    if(camera_number != 16){
+                    if (camera_number != 16) {
 
-                      video_menu.item(0, 2, { title: 'TLVideo' });
-                      video_menu.item(0, 3, { title: 'VideoPhoto' });
+                        video_menu.item(0, 2, {
+                            title: 'TLVideo'
+                        });
+                        video_menu.item(0, 3, {
+                            title: 'VideoPhoto'
+                        });
                     }
-                    if(camera_number != 17){
+                    if (camera_number != 17) {
 
-                      video_menu.item(0, 2, { title: 'TLVideo' });
-                      video_menu.item(0, 3, { title: 'VideoPhoto' });
+                        video_menu.item(0, 2, {
+                            title: 'TLVideo'
+                        });
+                        video_menu.item(0, 3, {
+                            title: 'VideoPhoto'
+                        });
                     }
-                    if(camera_number != 15){
+                    if (camera_number != 15) {
 
-                      video_menu.item(0, 2, { title: 'TLVideo' });
-                      video_menu.item(0, 3, { title: 'VideoPhoto' });
+                        video_menu.item(0, 2, {
+                            title: 'TLVideo'
+                        });
+                        video_menu.item(0, 3, {
+                            title: 'VideoPhoto'
+                        });
                     }
                     video_menu.on('select', function(video_menu_selection) {
                         switch (video_menu_selection.itemIndex) {
@@ -139,15 +151,23 @@ main.on('click', 'up', function(e) {
                             }]
                         }]
                     });
-                    if(camera_number != 15){
-                      photo_menu.item(0, 1, { title: 'Continuous' });
+                    if (camera_number != 15) {
+                        photo_menu.item(0, 1, {
+                            title: 'Continuous'
+                        });
                     }
-                    if(camera_number != 17){
-                      photo_menu.item(0, 1, { title: 'Continuous' });
+                    if (camera_number != 17) {
+                        photo_menu.item(0, 1, {
+                            title: 'Continuous'
+                        });
                     }
-                    if(camera_number != 16){
-                      photo_menu.item(0, 1, { title: 'Continuous' });
-                      photo_menu.item(0, 2, { title: 'Night' });
+                    if (camera_number != 16) {
+                        photo_menu.item(0, 1, {
+                            title: 'Continuous'
+                        });
+                        photo_menu.item(0, 2, {
+                            title: 'Night'
+                        });
                     }
                     photo_menu.on('select', function(photo_menu_selection) {
                         switch (photo_menu_selection.itemIndex) {
@@ -181,15 +201,17 @@ main.on('click', 'up', function(e) {
                         highlightBackgroundColor: 'white',
                         highlightTextColor: 'black',
                         sections: [{
-                          items: [{
-                            title: 'Burst'
-                          }, {
-                            title: 'TimeLapse'
-                          }]
+                            items: [{
+                                title: 'Burst'
+                            }, {
+                                title: 'TimeLapse'
+                            }]
                         }]
                     });
-                    if(camera_number != 16){
-                      ms_menu.item(0, 2, { title: 'NightLapse' });
+                    if (camera_number != 16) {
+                        ms_menu.item(0, 2, {
+                            title: 'NightLapse'
+                        });
                     }
                     ms_menu.on('select', function(photo_menu_selection) {
                         switch (photo_menu_selection.itemIndex) {
@@ -231,29 +253,29 @@ main.on('click', 'select', function(e) {
                     var obj = JSON.parse(xhr.responseText);
                     switch (obj.status[43]) {
                         case 0:
-                          //get camera rec status
-                          switch (obj.status[8]) {
-                              case 0:
-                                  //record
-                                  xhr.open("GET", "http://10.5.5.9/gp/gpControl/command/shutter?p=1", true);
-                                  xhr.send(null);
-                                  Vibe.vibrate('double');
+                            //get camera rec status
+                            switch (obj.status[8]) {
+                                case 0:
+                                    //record
+                                    xhr.open("GET", "http://10.5.5.9/gp/gpControl/command/shutter?p=1", true);
+                                    xhr.send(null);
+                                    Vibe.vibrate('double');
 
-                                  break;
-                              case 1:
-                                  //stop
-                                  xhr.open("GET", "http://10.5.5.9/gp/gpControl/command/shutter?p=0", true);
-                                  xhr.send(null);
-                                  Vibe.vibrate('short');
-                                  break;
-                          }
-													break;
+                                    break;
+                                case 1:
+                                    //stop
+                                    xhr.open("GET", "http://10.5.5.9/gp/gpControl/command/shutter?p=0", true);
+                                    xhr.send(null);
+                                    Vibe.vibrate('short');
+                                    break;
+                            }
+                            break;
                         case 1:
-                          xhr.open("GET", "http://10.5.5.9/gp/gpControl/command/shutter?p=1", true);
-                          xhr.send(null);
-                          Vibe.vibrate('double');
-													break;
-                  }
+                            xhr.open("GET", "http://10.5.5.9/gp/gpControl/command/shutter?p=1", true);
+                            xhr.send(null);
+                            Vibe.vibrate('double');
+                            break;
+                    }
                 }
             }
         };
@@ -701,15 +723,15 @@ function get_data_cam() {
     };
 
     xhr.send(null);
-      if (!keys.simplemode) {
-    setTimeout(get_data_cam, 2000);
-  } else {
-      main.title("Simple Mode");
-      main.body("Longpress Down to deactivate");
-      main.bodyColor('white');
-      main.titleColor('white');
-      main.backgroundColor('black');
-  }
+    if (!keys.simplemode) {
+        setTimeout(get_data_cam, 2000);
+    } else {
+        main.title("Simple Mode");
+        main.body("Longpress Down to deactivate");
+        main.bodyColor('white');
+        main.titleColor('white');
+        main.backgroundColor('black');
+    }
     /*
 
 
@@ -753,7 +775,7 @@ function get_h3_cam() {
                     if (xhr.readyState === xhr.DONE) {
                         if (xhr.status === 200) {
                             gopropassword = xhr.responseText.cleanup();
-                            h3Pass=gopropassword;
+                            h3Pass = gopropassword;
 
                             var data = "";
                             //screendata
@@ -792,23 +814,27 @@ function get_h3_cam() {
                                     console.log('The item is titled "' + e.item.title + '"');
                                     switch (e.itemIndex) {
                                         case 0:
-                                          xhr.open("GET", "http://10.5.5.9/camera/CM?t=" + gopropassword + "&p=%00", true);
-                                          xhr.send(null);
+                                            var xhr = new XMLHttpRequest();
+                                            xhr.open("GET", "http://10.5.5.9/camera/CM?t=" + gopropassword + "&p=%00", true);
+                                            xhr.send(null);
                                             menu.hide();
                                             break;
                                         case 1:
-                                          xhr.open("GET", "http://10.5.5.9/camera/CM?t=" + gopropassword + "&p=%01", true);
-                                          xhr.send(null);
+                                            var xhr = new XMLHttpRequest();
+                                            xhr.open("GET", "http://10.5.5.9/camera/CM?t=" + gopropassword + "&p=%01", true);
+                                            xhr.send(null);
                                             menu.hide();
                                             break;
                                         case 2:
-                                          xhr.open("GET", "http://10.5.5.9/camera/CM?t=" + h3Pass + "&p=%02", true);
-                                          xhr.send(null);
+                                            var xhr = new XMLHttpRequest();
+                                            xhr.open("GET", "http://10.5.5.9/camera/CM?t=" + h3Pass + "&p=%02", true);
+                                            xhr.send(null);
                                             menu.hide();
                                             break;
                                         case 3:
-                                          xhr.open("GET", "http://10.5.5.9/camera/CM?t=" + h3Pass + "&p=%03", true);
-                                          xhr.send(null);
+                                            var xhr = new XMLHttpRequest();
+                                            xhr.open("GET", "http://10.5.5.9/camera/CM?t=" + h3Pass + "&p=%03", true);
+                                            xhr.send(null);
                                             menu.hide();
                                             break;
                                     }
@@ -817,12 +843,14 @@ function get_h3_cam() {
                                 menu.show();
                             });
                             main_h3.on('click', 'select', function(e) {
-                              xhr.open("GET", "http://10.5.5.9/bacpac/SH?t=" + h3Pass + "&p=%01", true);
-                              xhr.send(null);
+                                var xhr = new XMLHttpRequest();
+                                xhr.open("GET", "http://10.5.5.9/bacpac/SH?t=" + h3Pass + "&p=%01", true);
+                                xhr.send(null);
                             });
                             main_h3.on('click', 'down', function(e) {
-                              xhr.open("GET", "http://10.5.5.9/bacpac/SH?t=" + h3Pass + "&p=%00", true);
-                              xhr.send(null);
+                                var xhr = new XMLHttpRequest();
+                                xhr.open("GET", "http://10.5.5.9/bacpac/SH?t=" + h3Pass + "&p=%00", true);
+                                xhr.send(null);
                             });
                             main_h3.show();
                         }
@@ -849,34 +877,33 @@ xhr.onload = function() {
             if (dump.indexOf("Hero3") != -1) {
                 //Detects HERO3/3+ (2014 and 2013) Cameras
                 get_h3_cam();
-                HERO3=true;
+                HERO3 = true;
+            } else {
+                //Further detection
+                xhr.open("GET", "http://10.5.5.9/gp/gpControl/info", true);
+                xhr.onload = function() {
+                    if (xhr.readyState === xhr.DONE) {
+                        if (xhr.status === 200) {
+                            var dump = xhr.responseText;
+                            if (dump.indexOf("HD5") != -1) {
+                                get_data_cam();
+                            }
+                            if (dump.indexOf("HERO4") != -1) {
+                                get_data_cam();
+                            }
+                        }
+                    }
+                };
+                xhr.send(null);
             }
-            else{
-              //Further detection
-              xhr.open("GET", "http://10.5.5.9/gp/gpControl/info", true);
-              xhr.onload = function() {
-                  if (xhr.readyState === xhr.DONE) {
-                      if (xhr.status === 200) {
-                          var dump = xhr.responseText;
-                          if (dump.indexOf("HD5") != -1) {
-                              get_data_cam();
-                          }
-                          if (dump.indexOf("HERO4") != -1) {
-                              get_data_cam();
-                          }
-                      }
-                  }
-              };
-              xhr.send(null);
+            if (dump.indexOf("HERO4") != -1) {
+                get_data_cam();
             }
-            if (dump.indexOf("HERO4") != -1){
-              get_data_cam();
+            if (dump.indexOf("HD3.2") != -1) {
+                get_data_cam();
             }
-            if (dump.indexOf("HD3.2") != -1){
-              get_data_cam();
-            }
-            if (dump.indexOf("HX") != -1){
-              get_data_cam();
+            if (dump.indexOf("HX") != -1) {
+                get_data_cam();
             }
         }
     }
@@ -886,20 +913,20 @@ xhr.send(null);
 
 
 //HERO5 detection
-if(HERO3==False){
-xhr.open("GET", "http://10.5.5.9/gp/gpControl/info", true);
-xhr.onload = function() {
-    if (xhr.readyState === xhr.DONE) {
-        if (xhr.status === 200) {
-            var dump = xhr.responseText;
-            if (dump.indexOf("HD5") != -1) {
-                get_data_cam();
-            }
-            if (dump.indexOf("HERO4") != -1) {
-                get_data_cam();
+if (HERO3 == False) {
+    xhr.open("GET", "http://10.5.5.9/gp/gpControl/info", true);
+    xhr.onload = function() {
+        if (xhr.readyState === xhr.DONE) {
+            if (xhr.status === 200) {
+                var dump = xhr.responseText;
+                if (dump.indexOf("HD5") != -1) {
+                    get_data_cam();
+                }
+                if (dump.indexOf("HERO4") != -1) {
+                    get_data_cam();
+                }
             }
         }
-    }
-};
-xhr.send(null);
+    };
+    xhr.send(null);
 }
