@@ -764,7 +764,7 @@ function get_h3_cam() {
                                 bodyColor: 'white',
                                 backgroundColor: 'black'
                             });
-                            main_h3.show();
+
                             main_h3.on('click', 'up', function(e) {
                                 //show menu
                                 var menu = new UI.Menu({
@@ -816,6 +816,7 @@ function get_h3_cam() {
                             main_h3.on('click', 'down', function(e) {
                                 command_h3("bacpac", "SH", gopropassword, "00");
                             });
+                            main_h3.show();
                         }
                     }
                 };
@@ -837,37 +838,42 @@ xhr.onload = function() {
     if (xhr.readyState === xhr.DONE) {
         if (xhr.status === 200) {
             var dump = xhr.responseText;
-            if (dump.indexOf("HD3.1") != -1) {
+            if (dump.indexOf("Hero3") != -1) {
                 //Detects HERO3/3+ (2014 and 2013) Cameras
                 get_h3_cam();
             }
             else{
-              if (dump.indexOf("HD3.2") != -1) {
-                  //Detects HERO+ cameras
-                  get_data_cam();
-              }
+              //Further detection
+              xhr.open("GET", "http://10.5.5.9/gp/gpControl/info", true);
+              xhr.onload = function() {
+                  if (xhr.readyState === xhr.DONE) {
+                      if (xhr.status === 200) {
+                          var dump = xhr.responseText;
+                          if (dump.indexOf("HD5") != -1) {
+                              get_data_cam();
+                          }
+                          if (dump.indexOf("HERO4") != -1) {
+                              get_data_cam();
+                          }
+                      }
+                  }
+              };
+              xhr.send(null);
             }
             if (dump.indexOf("HERO4") != -1){
+              get_data_cam();
+            }
+            if (dump.indexOf("HD3.2") != -1){
+              get_data_cam();
+            }
+            if (dump.indexOf("HX") != -1){
               get_data_cam();
             }
         }
     }
 };
 
-//Further detection
-xhr.open("GET", "http://10.5.5.9/gp/gpControl/info", true);
-xhr.onload = function() {
-    if (xhr.readyState === xhr.DONE) {
-        if (xhr.status === 200) {
-            var dump = xhr.responseText;
-            if (dump.indexOf("HD5") != -1) {
-                get_data_cam();
-            }
-            if (dump.indexOf("HERO4") != -1) {
-                get_data_cam();
-            }
-        }
-    }
-};
 xhr.send(null);
+
+
 Light.on();

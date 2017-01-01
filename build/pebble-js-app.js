@@ -153,34 +153,49 @@
 	                        sections: [{
 	                            items: [{
 	                                title: 'Single',
-	                            }, {
-	                                title: 'TLVideo',
-	                            }, {
-	                                title: 'VideoPhoto',
-	                            }, {
+	                            },{
 	                                title: 'Looping',
 	                            }]
 	                        }]
 	                    });
+	                    if(camera_number != 16){
+	
+	                      ms_menu.item(0, 2, { title: 'TLVideo' });
+	                      ms_menu.item(0, 3, { title: 'VideoPhoto' });
+	                    }
+	                    if(camera_number != 17){
+	
+	                      ms_menu.item(0, 2, { title: 'TLVideo' });
+	                      ms_menu.item(0, 3, { title: 'VideoPhoto' });
+	                    }
+	                    if(camera_number != 15){
+	
+	                      ms_menu.item(0, 2, { title: 'TLVideo' });
+	                      ms_menu.item(0, 3, { title: 'VideoPhoto' });
+	                    }
 	                    video_menu.on('select', function(video_menu_selection) {
 	                        switch (video_menu_selection.itemIndex) {
 	                            case 0:
+	                                //single
 	                                command_h4_modes('0', '0');
 	                                video_menu.hide();
 	                                menu.hide();
 	                                break;
 	                            case 1:
-	                                command_h4_modes('0', '1');
+	                                //looping
+	                                command_h4_modes('0', '3');
 	                                video_menu.hide();
 	                                menu.hide();
 	                                break;
 	                            case 2:
-	                                command_h4_modes('0', '2');
+	                                //TLVideo
+	                                command_h4_modes('0', '1');
 	                                video_menu.hide();
 	                                menu.hide();
 	                                break;
 	                            case 3:
-	                                command_h4_modes('0', '3');
+	                                //VideoPhoto
+	                                command_h4_modes('0', '2');
 	                                video_menu.hide();
 	                                menu.hide();
 	                                break;
@@ -199,13 +214,19 @@
 	                        sections: [{
 	                            items: [{
 	                                title: 'Single',
-	                            }, {
-	                                title: 'Continuous',
-	                            }, {
-	                                title: 'Night',
 	                            }]
 	                        }]
 	                    });
+	                    if(camera_number != 15){
+	                      photo_menu.item(0, 1, { title: 'Continuous' });
+	                    }
+	                    if(camera_number != 17){
+	                      photo_menu.item(0, 1, { title: 'Continuous' });
+	                    }
+	                    if(camera_number != 16){
+	                      photo_menu.item(0, 1, { title: 'Continuous' });
+	                      photo_menu.item(0, 2, { title: 'Night' });
+	                    }
 	                    photo_menu.on('select', function(photo_menu_selection) {
 	                        switch (photo_menu_selection.itemIndex) {
 	                            case 0:
@@ -823,7 +844,7 @@
 	                                bodyColor: 'white',
 	                                backgroundColor: 'black'
 	                            });
-	                            main_h3.show();
+	
 	                            main_h3.on('click', 'up', function(e) {
 	                                //show menu
 	                                var menu = new UI.Menu({
@@ -875,6 +896,7 @@
 	                            main_h3.on('click', 'down', function(e) {
 	                                command_h3("bacpac", "SH", gopropassword, "00");
 	                            });
+	                            main_h3.show();
 	                        }
 	                    }
 	                };
@@ -896,39 +918,44 @@
 	    if (xhr.readyState === xhr.DONE) {
 	        if (xhr.status === 200) {
 	            var dump = xhr.responseText;
-	            if (dump.indexOf("HD3.1") != -1) {
+	            if (dump.indexOf("Hero3") != -1) {
 	                //Detects HERO3/3+ (2014 and 2013) Cameras
 	                get_h3_cam();
 	            }
 	            else{
-	              if (dump.indexOf("HD3.2") != -1) {
-	                  //Detects HERO+ cameras
-	                  get_data_cam();
-	              }
+	              //Further detection
+	              xhr.open("GET", "http://10.5.5.9/gp/gpControl/info", true);
+	              xhr.onload = function() {
+	                  if (xhr.readyState === xhr.DONE) {
+	                      if (xhr.status === 200) {
+	                          var dump = xhr.responseText;
+	                          if (dump.indexOf("HD5") != -1) {
+	                              get_data_cam();
+	                          }
+	                          if (dump.indexOf("HERO4") != -1) {
+	                              get_data_cam();
+	                          }
+	                      }
+	                  }
+	              };
+	              xhr.send(null);
 	            }
 	            if (dump.indexOf("HERO4") != -1){
+	              get_data_cam();
+	            }
+	            if (dump.indexOf("HD3.2") != -1){
+	              get_data_cam();
+	            }
+	            if (dump.indexOf("HX") != -1){
 	              get_data_cam();
 	            }
 	        }
 	    }
 	};
 	
-	//Further detection
-	xhr.open("GET", "http://10.5.5.9/gp/gpControl/info", true);
-	xhr.onload = function() {
-	    if (xhr.readyState === xhr.DONE) {
-	        if (xhr.status === 200) {
-	            var dump = xhr.responseText;
-	            if (dump.indexOf("HD5") != -1) {
-	                get_data_cam();
-	            }
-	            if (dump.indexOf("HERO4") != -1) {
-	                get_data_cam();
-	            }
-	        }
-	    }
-	};
 	xhr.send(null);
+	
+	
 	Light.on();
 
 
