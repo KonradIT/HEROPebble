@@ -80,32 +80,17 @@ main.on('click', 'up', function(e) {
                             }]
                         }]
                     });
-                    if (camera_number != 16) {
 
-                        video_menu.item(0, 2, {
-                            title: 'TLVideo'
-                        });
-                        video_menu.item(0, 3, {
-                            title: 'VideoPhoto'
-                        });
+                    if (camera_number = 16 || 15 || 17) {
+
                     }
-                    if (camera_number != 17) {
-
-                        video_menu.item(0, 2, {
-                            title: 'TLVideo'
-                        });
-                        video_menu.item(0, 3, {
-                            title: 'VideoPhoto'
-                        });
-                    }
-                    if (camera_number != 15) {
-
-                        video_menu.item(0, 2, {
-                            title: 'TLVideo'
-                        });
-                        video_menu.item(0, 3, {
-                            title: 'VideoPhoto'
-                        });
+                    else{
+                      video_menu.item(0, 2, {
+                          title: 'TLVideo'
+                      });
+                      video_menu.item(0, 3, {
+                          title: 'VideoPhoto'
+                      });
                     }
                     video_menu.on('select', function(video_menu_selection) {
                         switch (video_menu_selection.itemIndex) {
@@ -151,23 +136,16 @@ main.on('click', 'up', function(e) {
                             }]
                         }]
                     });
-                    if (camera_number != 15) {
-                        photo_menu.item(0, 1, {
-                            title: 'Continuous'
-                        });
+                    if (camera_number = 16 || 15 || 17) {
+
                     }
-                    if (camera_number != 17) {
-                        photo_menu.item(0, 1, {
-                            title: 'Continuous'
-                        });
-                    }
-                    if (camera_number != 16) {
-                        photo_menu.item(0, 1, {
-                            title: 'Continuous'
-                        });
-                        photo_menu.item(0, 2, {
-                            title: 'Night'
-                        });
+                    else{
+                      photo_menu.item(0, 1, {
+                          title: 'Continuous'
+                      });
+                      photo_menu.item(0, 2, {
+                          title: 'Night'
+                      });
                     }
                     photo_menu.on('select', function(photo_menu_selection) {
                         switch (photo_menu_selection.itemIndex) {

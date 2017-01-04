@@ -24,51 +24,51 @@ Archive member included to satisfy reference by file (symbol)
                               /home/konrad/Pebble Projects/GoProJS/node_modules/pebblejs/dist/binaries/aplite/libpebblejs.a(simply_menu.c.21.o) (simply_window_single_click_handler)
 /home/konrad/Pebble Projects/GoProJS/node_modules/pebblejs/dist/binaries/aplite/libpebblejs.a(simply_window_stack.c.21.o)
                               /home/konrad/Pebble Projects/GoProJS/node_modules/pebblejs/dist/binaries/aplite/libpebblejs.a(simply_msg.c.21.o) (simply_window_stack_set_broadcast)
-/usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/libgcc.a(_aeabi_ldivmod.o)
+/usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/libgcc.a(_aeabi_ldivmod.o)
                               /home/konrad/Pebble Projects/GoProJS/node_modules/pebblejs/dist/binaries/aplite/libpebblejs.a(simply_menu.c.21.o) (__aeabi_ldivmod)
-/usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/libgcc.a(_udivmoddi4.o)
-                              /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/libgcc.a(_aeabi_ldivmod.o) (__udivmoddi4)
-/usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/libgcc.a(_dvmd_tls.o)
-                              /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/libgcc.a(_aeabi_ldivmod.o) (__aeabi_ldiv0)
-/usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-atexit.o)
-                              /usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/crt0.o (atexit)
-/usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-exit.o)
-                              /usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/crt0.o (exit)
-/usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-fini.o)
-                              /usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/crt0.o (__libc_fini_array)
-/usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-impure.o)
-                              /usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-exit.o) (_global_impure_ptr)
-/usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-init.o)
-                              /usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/crt0.o (__libc_init_array)
-/usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-__atexit.o)
-                              /usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-atexit.o) (__register_exitproc)
-/usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-__call_atexit.o)
-                              /usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-exit.o) (__call_exitprocs)
+/usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/libgcc.a(_udivmoddi4.o)
+                              /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/libgcc.a(_aeabi_ldivmod.o) (__udivmoddi4)
+/usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/libgcc.a(_dvmd_tls.o)
+                              /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/libgcc.a(_aeabi_ldivmod.o) (__aeabi_ldiv0)
+/usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-atexit.o)
+                              /usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/crt0.o (atexit)
+/usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-exit.o)
+                              /usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/crt0.o (exit)
+/usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-fini.o)
+                              /usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/crt0.o (__libc_fini_array)
+/usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-impure.o)
+                              /usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-exit.o) (_global_impure_ptr)
+/usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-init.o)
+                              /usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/crt0.o (__libc_init_array)
+/usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-__atexit.o)
+                              /usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-atexit.o) (__register_exitproc)
+/usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-__call_atexit.o)
+                              /usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-exit.o) (__call_exitprocs)
 
 Discarded input sections
 
- .text          0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/crti.o
- .bss           0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/crti.o
- .text          0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/crtbegin.o
- .bss           0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/crtbegin.o
- .init_array    0x0000000000000000        0x4 /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/crtbegin.o
- .fini_array    0x0000000000000000        0x4 /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/crtbegin.o
- .eh_frame      0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/crtbegin.o
- .jcr           0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/crtbegin.o
+ .text          0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/crti.o
+ .bss           0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/crti.o
+ .text          0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/crtbegin.o
+ .bss           0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/crtbegin.o
+ .init_array    0x0000000000000000        0x4 /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/crtbegin.o
+ .fini_array    0x0000000000000000        0x4 /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/crtbegin.o
+ .eh_frame      0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/crtbegin.o
+ .jcr           0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/crtbegin.o
  .data.__dso_handle
-                0x0000000000000000        0x4 /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/crtbegin.o
+                0x0000000000000000        0x4 /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/crtbegin.o
  .text.__do_global_dtors_aux
-                0x0000000000000000       0x24 /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/crtbegin.o
+                0x0000000000000000       0x24 /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/crtbegin.o
  .text.frame_dummy
-                0x0000000000000000       0x34 /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/crtbegin.o
- .bss.completed.8507
-                0x0000000000000000        0x1 /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/crtbegin.o
- .bss.object.8512
-                0x0000000000000000       0x18 /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/crtbegin.o
- .text          0x0000000000000000       0x68 /usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/crt0.o
- .bss           0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/crt0.o
- .ARM.extab     0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/crt0.o
- .ARM.exidx     0x0000000000000000        0x8 /usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/crt0.o
+                0x0000000000000000       0x34 /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/crtbegin.o
+ .bss.completed.8585
+                0x0000000000000000        0x1 /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/crtbegin.o
+ .bss.object.8590
+                0x0000000000000000       0x18 /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/crtbegin.o
+ .text          0x0000000000000000       0x68 /usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/crt0.o
+ .bss           0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/crt0.o
+ .ARM.extab     0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/crt0.o
+ .ARM.exidx     0x0000000000000000        0x8 /usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/crt0.o
  .text          0x0000000000000000        0x0 src/c/GoProJS.c.33.o
  .bss           0x0000000000000000        0x0 src/c/GoProJS.c.33.o
  .text          0x0000000000000000        0x0 aplite/appinfo.auto.c.33.o
@@ -1006,54 +1006,54 @@ Discarded input sections
                 0x0000000000000000       0x28 /home/konrad/Pebble Projects/GoProJS/node_modules/pebblejs/dist/binaries/aplite/libpebblejs.a(simply_window.c.21.o)
  .text          0x0000000000000000        0x0 /home/konrad/Pebble Projects/GoProJS/node_modules/pebblejs/dist/binaries/aplite/libpebblejs.a(simply_window_stack.c.21.o)
  .bss           0x0000000000000000        0x0 /home/konrad/Pebble Projects/GoProJS/node_modules/pebblejs/dist/binaries/aplite/libpebblejs.a(simply_window_stack.c.21.o)
- .bss           0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/libgcc.a(_aeabi_ldivmod.o)
- .text          0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/libgcc.a(_udivmoddi4.o)
- .bss           0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/libgcc.a(_udivmoddi4.o)
+ .bss           0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/libgcc.a(_aeabi_ldivmod.o)
+ .text          0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/libgcc.a(_udivmoddi4.o)
+ .bss           0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/libgcc.a(_udivmoddi4.o)
  .ARM.extab.text.__udivmoddi4
-                0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/libgcc.a(_udivmoddi4.o)
- .bss           0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/libgcc.a(_dvmd_tls.o)
- .text          0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-atexit.o)
- .bss           0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-atexit.o)
- .text.atexit   0x0000000000000000        0xc /usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-atexit.o)
- .text          0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-exit.o)
- .bss           0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-exit.o)
- .text.exit     0x0000000000000000       0x20 /usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-exit.o)
- .text          0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-fini.o)
- .bss           0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-fini.o)
+                0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/libgcc.a(_udivmoddi4.o)
+ .bss           0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/libgcc.a(_dvmd_tls.o)
+ .text          0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-atexit.o)
+ .bss           0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-atexit.o)
+ .text.atexit   0x0000000000000000        0xc /usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-atexit.o)
+ .text          0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-exit.o)
+ .bss           0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-exit.o)
+ .text.exit     0x0000000000000000       0x20 /usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-exit.o)
+ .text          0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-fini.o)
+ .bss           0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-fini.o)
  .text.__libc_fini_array
-                0x0000000000000000       0x34 /usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-fini.o)
- .text          0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-impure.o)
- .bss           0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-impure.o)
+                0x0000000000000000       0x34 /usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-fini.o)
+ .text          0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-impure.o)
+ .bss           0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-impure.o)
  .data._impure_ptr
-                0x0000000000000000        0x4 /usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-impure.o)
+                0x0000000000000000        0x4 /usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-impure.o)
  .data.impure_data
-                0x0000000000000000      0x428 /usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-impure.o)
+                0x0000000000000000      0x428 /usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-impure.o)
  .rodata._global_impure_ptr
-                0x0000000000000000        0x4 /usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-impure.o)
- .text          0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-init.o)
- .bss           0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-init.o)
+                0x0000000000000000        0x4 /usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-impure.o)
+ .text          0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-init.o)
+ .bss           0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-init.o)
  .text.__libc_init_array
-                0x0000000000000000       0x50 /usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-init.o)
- .text          0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-__atexit.o)
- .bss           0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-__atexit.o)
+                0x0000000000000000       0x50 /usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-init.o)
+ .text          0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-__atexit.o)
+ .bss           0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-__atexit.o)
  .text.__register_exitproc
-                0x0000000000000000       0xac /usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-__atexit.o)
- .text          0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-__call_atexit.o)
- .bss           0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-__call_atexit.o)
+                0x0000000000000000       0xac /usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-__atexit.o)
+ .text          0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-__call_atexit.o)
+ .bss           0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-__call_atexit.o)
  .text.startup.register_fini
-                0x0000000000000000       0x14 /usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-__call_atexit.o)
+                0x0000000000000000       0x14 /usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-__call_atexit.o)
  .init_array.00000
-                0x0000000000000000        0x4 /usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-__call_atexit.o)
+                0x0000000000000000        0x4 /usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-__call_atexit.o)
  .text.__call_exitprocs
-                0x0000000000000000       0xd4 /usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-__call_atexit.o)
- .text          0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/crtend.o
- .bss           0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/crtend.o
- .eh_frame      0x0000000000000000        0x4 /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/crtend.o
- .jcr           0x0000000000000000        0x4 /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/crtend.o
- .text          0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/crtn.o
- .bss           0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/crtn.o
- .init          0x0000000000000000        0x8 /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/crtn.o
- .fini          0x0000000000000000        0x8 /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/crtn.o
+                0x0000000000000000       0xd4 /usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-__call_atexit.o)
+ .text          0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/crtend.o
+ .bss           0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/crtend.o
+ .eh_frame      0x0000000000000000        0x4 /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/crtend.o
+ .jcr           0x0000000000000000        0x4 /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/crtend.o
+ .text          0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/crtn.o
+ .bss           0x0000000000000000        0x0 /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/crtn.o
+ .init          0x0000000000000000        0x8 /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/crtn.o
+ .fini          0x0000000000000000        0x8 /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/crtn.o
 
 Memory Configuration
 
@@ -1063,9 +1063,9 @@ APP              0x0000000000000000 0x0000000000006000 xrw
 
 Linker script and memory map
 
-LOAD /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/crti.o
-LOAD /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/crtbegin.o
-LOAD /usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/crt0.o
+LOAD /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/crti.o
+LOAD /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/crtbegin.o
+LOAD /usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/crt0.o
 LOAD src/c/GoProJS.c.33.o
 LOAD aplite/appinfo.auto.c.33.o
 LOAD aplite/src/resource_ids.auto.c.33.o
@@ -1074,11 +1074,11 @@ LOAD /home/konrad/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.
 LOAD /home/konrad/Pebble Projects/GoProJS/node_modules/pebblejs/dist/binaries/aplite/libpebblejs.a
 LOAD /home/konrad/Pebble Projects/GoProJS/node_modules/pebble-clay/dist/binaries/aplite/libpebble-clay.a
 START GROUP
-LOAD /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/libgcc.a
-LOAD /usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a
+LOAD /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/libgcc.a
+LOAD /usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/libc.a
 END GROUP
-LOAD /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/crtend.o
-LOAD /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/crtn.o
+LOAD /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/crtend.o
+LOAD /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/crtn.o
 
 .header         0x0000000000000000       0x82
  *(.pbl_header)
@@ -1096,9 +1096,9 @@ LOAD /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/crtn.o
 .text           0x00000000000000a8     0x3cc1
  *(.text)
  .text          0x00000000000000a8       0x14 /home/konrad/.pebble-sdk/SDKs/current/sdk-core/pebble/aplite/lib/libpebble.a(tmp7jpKUopebble.o)
- .text          0x00000000000000bc       0xa0 /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/libgcc.a(_aeabi_ldivmod.o)
+ .text          0x00000000000000bc       0xa0 /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/libgcc.a(_aeabi_ldivmod.o)
                 0x00000000000000bc                __aeabi_ldivmod
- .text          0x000000000000015c        0x4 /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/libgcc.a(_dvmd_tls.o)
+ .text          0x000000000000015c        0x4 /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/libgcc.a(_dvmd_tls.o)
                 0x000000000000015c                __aeabi_ldiv0
                 0x000000000000015c                __aeabi_idiv0
  *(.text.*)
@@ -1978,7 +1978,7 @@ LOAD /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/crtn.o
                 0x00000000000039ce        0x8 /home/konrad/Pebble Projects/GoProJS/node_modules/pebblejs/dist/binaries/aplite/libpebblejs.a(simply_window_stack.c.21.o)
                 0x00000000000039ce                simply_window_stack_destroy
  .text.__udivmoddi4
-                0x00000000000039d6      0x2b8 /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/libgcc.a(_udivmoddi4.o)
+                0x00000000000039d6      0x2b8 /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/libgcc.a(_udivmoddi4.o)
                 0x00000000000039d6                __udivmoddi4
  *(.rodata)
  *(.rodata*)
@@ -2007,30 +2007,30 @@ LOAD /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/crtn.o
  .v4_bx         0x0000000000003d6c        0x0 linker stubs
 
 .init           0x0000000000003d6c        0x4
- .init          0x0000000000003d6c        0x4 /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/crti.o
+ .init          0x0000000000003d6c        0x4 /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/crti.o
                 0x0000000000003d6c                _init
 
 .fini           0x0000000000003d70        0x4
- .fini          0x0000000000003d70        0x4 /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/crti.o
+ .fini          0x0000000000003d70        0x4 /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/crti.o
                 0x0000000000003d70                _fini
 
 .iplt           0x0000000000003d74        0x0
- .iplt          0x0000000000003d74        0x0 /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/crtbegin.o
+ .iplt          0x0000000000003d74        0x0 /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/crtbegin.o
 
 .rel.dyn        0x0000000000003d74        0x0
- .rel.iplt      0x0000000000003d74        0x0 /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/crtbegin.o
- .rel.got       0x0000000000003d74        0x0 /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/crtbegin.o
+ .rel.iplt      0x0000000000003d74        0x0 /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/crtbegin.o
+ .rel.got       0x0000000000003d74        0x0 /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/crtbegin.o
 
 .ARM.exidx.text.__udivmoddi4
                 0x0000000000003d74        0x8
  .ARM.exidx.text.__udivmoddi4
-                0x0000000000003d74        0x8 /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/libgcc.a(_udivmoddi4.o)
+                0x0000000000003d74        0x8 /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/libgcc.a(_udivmoddi4.o)
 
 .data           0x0000000000003d7c       0x57
  *(.data)
- .data          0x0000000000003d7c        0x0 /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/crti.o
- .data          0x0000000000003d7c        0x0 /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/crtbegin.o
- .data          0x0000000000003d7c        0x0 /usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/crt0.o
+ .data          0x0000000000003d7c        0x0 /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/crti.o
+ .data          0x0000000000003d7c        0x0 /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/crtbegin.o
+ .data          0x0000000000003d7c        0x0 /usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/crt0.o
  .data          0x0000000000003d7c        0x0 src/c/GoProJS.c.33.o
  .data          0x0000000000003d7c        0x0 aplite/appinfo.auto.c.33.o
  .data          0x0000000000003d7c        0x0 aplite/src/resource_ids.auto.c.33.o
@@ -2047,18 +2047,18 @@ LOAD /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/crtn.o
  .data          0x0000000000003d7c        0x0 /home/konrad/Pebble Projects/GoProJS/node_modules/pebblejs/dist/binaries/aplite/libpebblejs.a(simply_wakeup.c.21.o)
  .data          0x0000000000003d7c        0x0 /home/konrad/Pebble Projects/GoProJS/node_modules/pebblejs/dist/binaries/aplite/libpebblejs.a(simply_window.c.21.o)
  .data          0x0000000000003d7c        0x0 /home/konrad/Pebble Projects/GoProJS/node_modules/pebblejs/dist/binaries/aplite/libpebblejs.a(simply_window_stack.c.21.o)
- .data          0x0000000000003d7c        0x0 /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/libgcc.a(_aeabi_ldivmod.o)
- .data          0x0000000000003d7c        0x0 /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/libgcc.a(_udivmoddi4.o)
- .data          0x0000000000003d7c        0x0 /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/libgcc.a(_dvmd_tls.o)
- .data          0x0000000000003d7c        0x0 /usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-atexit.o)
- .data          0x0000000000003d7c        0x0 /usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-exit.o)
- .data          0x0000000000003d7c        0x0 /usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-fini.o)
- .data          0x0000000000003d7c        0x0 /usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-impure.o)
- .data          0x0000000000003d7c        0x0 /usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-init.o)
- .data          0x0000000000003d7c        0x0 /usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-__atexit.o)
- .data          0x0000000000003d7c        0x0 /usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-__call_atexit.o)
- .data          0x0000000000003d7c        0x0 /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/crtend.o
- .data          0x0000000000003d7c        0x0 /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/crtn.o
+ .data          0x0000000000003d7c        0x0 /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/libgcc.a(_aeabi_ldivmod.o)
+ .data          0x0000000000003d7c        0x0 /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/libgcc.a(_udivmoddi4.o)
+ .data          0x0000000000003d7c        0x0 /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/libgcc.a(_dvmd_tls.o)
+ .data          0x0000000000003d7c        0x0 /usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-atexit.o)
+ .data          0x0000000000003d7c        0x0 /usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-exit.o)
+ .data          0x0000000000003d7c        0x0 /usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-fini.o)
+ .data          0x0000000000003d7c        0x0 /usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-impure.o)
+ .data          0x0000000000003d7c        0x0 /usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-init.o)
+ .data          0x0000000000003d7c        0x0 /usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-__atexit.o)
+ .data          0x0000000000003d7c        0x0 /usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-__call_atexit.o)
+ .data          0x0000000000003d7c        0x0 /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/crtend.o
+ .data          0x0000000000003d7c        0x0 /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/crtn.o
  *(.data.*)
  .data.RESOURCE_ID_SIMPLY_IMAGE_TILE_SPLASH
                 0x0000000000003d7c        0x4 aplite/src/resource_ids.auto.c.33.o
@@ -2086,13 +2086,13 @@ LOAD /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/crtn.o
                 0x0000000000003dd2        0x1 /home/konrad/Pebble Projects/GoProJS/node_modules/pebblejs/dist/binaries/aplite/libpebblejs.a(simply_window_stack.c.21.o)
 
 .igot.plt       0x0000000000003dd4        0x0
- .igot.plt      0x0000000000003dd4        0x0 /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/crtbegin.o
+ .igot.plt      0x0000000000003dd4        0x0 /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/crtbegin.o
 
 .got            0x0000000000003dd4        0x8
- .got           0x0000000000003dd4        0x8 /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/crtbegin.o
+ .got           0x0000000000003dd4        0x8 /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/crtbegin.o
 
 .got.plt        0x0000000000003ddc        0xc
- .got.plt       0x0000000000003ddc        0xc /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/crtbegin.o
+ .got.plt       0x0000000000003ddc        0xc /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/crtbegin.o
                 0x0000000000003ddc                _GLOBAL_OFFSET_TABLE_
 
 .bss            0x0000000000003de8      0x174
@@ -2122,11 +2122,11 @@ OUTPUT(/home/konrad/Pebble Projects/GoProJS/build/aplite/pebble-app.elf elf32-li
 .ARM.attributes
                 0x0000000000000000       0x29
  .ARM.attributes
-                0x0000000000000000       0x1d /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/crti.o
+                0x0000000000000000       0x1d /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/crti.o
  .ARM.attributes
-                0x000000000000001d       0x2d /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/crtbegin.o
+                0x000000000000001d       0x2d /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/crtbegin.o
  .ARM.attributes
-                0x000000000000004a       0x1b /usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/crt0.o
+                0x000000000000004a       0x1b /usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/crt0.o
  .ARM.attributes
                 0x0000000000000065       0x33 src/c/GoProJS.c.33.o
  .ARM.attributes
@@ -2160,29 +2160,29 @@ OUTPUT(/home/konrad/Pebble Projects/GoProJS/build/aplite/pebble-app.elf elf32-li
  .ARM.attributes
                 0x0000000000000350       0x33 /home/konrad/Pebble Projects/GoProJS/node_modules/pebblejs/dist/binaries/aplite/libpebblejs.a(simply_window_stack.c.21.o)
  .ARM.attributes
-                0x0000000000000383       0x1d /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/libgcc.a(_aeabi_ldivmod.o)
+                0x0000000000000383       0x1d /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/libgcc.a(_aeabi_ldivmod.o)
  .ARM.attributes
-                0x00000000000003a0       0x2d /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/libgcc.a(_udivmoddi4.o)
+                0x00000000000003a0       0x2d /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/libgcc.a(_udivmoddi4.o)
  .ARM.attributes
-                0x00000000000003cd       0x1d /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/libgcc.a(_dvmd_tls.o)
+                0x00000000000003cd       0x1d /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/libgcc.a(_dvmd_tls.o)
  .ARM.attributes
-                0x00000000000003ea       0x2d /usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-atexit.o)
+                0x00000000000003ea       0x2d /usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-atexit.o)
  .ARM.attributes
-                0x0000000000000417       0x2d /usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-exit.o)
+                0x0000000000000417       0x2d /usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-exit.o)
  .ARM.attributes
-                0x0000000000000444       0x2d /usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-fini.o)
+                0x0000000000000444       0x2d /usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-fini.o)
  .ARM.attributes
-                0x0000000000000471       0x2d /usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-impure.o)
+                0x0000000000000471       0x2d /usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-impure.o)
  .ARM.attributes
-                0x000000000000049e       0x2d /usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-init.o)
+                0x000000000000049e       0x2d /usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-init.o)
  .ARM.attributes
-                0x00000000000004cb       0x2d /usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-__atexit.o)
+                0x00000000000004cb       0x2d /usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-__atexit.o)
  .ARM.attributes
-                0x00000000000004f8       0x2d /usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-__call_atexit.o)
+                0x00000000000004f8       0x2d /usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-__call_atexit.o)
  .ARM.attributes
-                0x0000000000000525       0x2d /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/crtend.o
+                0x0000000000000525       0x2d /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/crtend.o
  .ARM.attributes
-                0x0000000000000552       0x1d /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/crtn.o
+                0x0000000000000552       0x1d /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/crtn.o
 
 .comment        0x0000000000000000       0x6b
  .comment       0x0000000000000000       0x1d src/c/GoProJS.c.33.o
@@ -2359,11 +2359,11 @@ OUTPUT(/home/konrad/Pebble Projects/GoProJS/build/aplite/pebble-app.elf elf32-li
  .debug_frame   0x0000000000000d50       0x7c /home/konrad/Pebble Projects/GoProJS/node_modules/pebblejs/dist/binaries/aplite/libpebblejs.a(simply_wakeup.c.21.o)
  .debug_frame   0x0000000000000dcc      0x288 /home/konrad/Pebble Projects/GoProJS/node_modules/pebblejs/dist/binaries/aplite/libpebblejs.a(simply_window.c.21.o)
  .debug_frame   0x0000000000001054      0x114 /home/konrad/Pebble Projects/GoProJS/node_modules/pebblejs/dist/binaries/aplite/libpebblejs.a(simply_window_stack.c.21.o)
- .debug_frame   0x0000000000001168       0x44 /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/libgcc.a(_aeabi_ldivmod.o)
- .debug_frame   0x00000000000011ac       0x38 /usr/lib/gcc/arm-none-eabi/6.2.0/armv7-m/libgcc.a(_udivmoddi4.o)
- .debug_frame   0x00000000000011e4       0x20 /usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-atexit.o)
- .debug_frame   0x0000000000001204       0x28 /usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-exit.o)
- .debug_frame   0x000000000000122c       0x34 /usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-fini.o)
- .debug_frame   0x0000000000001260       0x2c /usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-init.o)
- .debug_frame   0x000000000000128c       0x34 /usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-__atexit.o)
- .debug_frame   0x00000000000012c0       0x50 /usr/lib/gcc/arm-none-eabi/6.2.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-__call_atexit.o)
+ .debug_frame   0x0000000000001168       0x44 /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/libgcc.a(_aeabi_ldivmod.o)
+ .debug_frame   0x00000000000011ac       0x38 /usr/lib/gcc/arm-none-eabi/6.3.0/armv7-m/libgcc.a(_udivmoddi4.o)
+ .debug_frame   0x00000000000011e4       0x20 /usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-atexit.o)
+ .debug_frame   0x0000000000001204       0x28 /usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-exit.o)
+ .debug_frame   0x000000000000122c       0x34 /usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-fini.o)
+ .debug_frame   0x0000000000001260       0x2c /usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-init.o)
+ .debug_frame   0x000000000000128c       0x34 /usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-__atexit.o)
+ .debug_frame   0x00000000000012c0       0x50 /usr/lib/gcc/arm-none-eabi/6.3.0/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-__call_atexit.o)

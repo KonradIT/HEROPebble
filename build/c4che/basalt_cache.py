@@ -13,7 +13,7 @@ CCLNK_TGT_F = ['-o']
 CC_NAME = 'gcc'
 CC_SRC_F = []
 CC_TGT_F = ['-c', '-o']
-CC_VERSION = ('6', '2', '0')
+CC_VERSION = ('6', '3', '0')
 CFLAGS = ['-std=c99', '-mcpu=cortex-m3', '-mthumb', '-ffunction-sections', '-fdata-sections', '-g', '-fPIE', '-Os', '-D_TIME_H_', '-Wall', '-Wextra', '-Werror', '-Wno-unused-parameter', '-Wno-error=unused-function', '-Wno-error=unused-variable']
 CFLAGS_MACBUNDLE = ['-fPIC']
 CFLAGS_cshlib = ['-fPIC']
@@ -62,7 +62,7 @@ STLIB_MARKER = None
 STLIB_ST = '-l%s'
 SUPPORTED_PLATFORMS = ['aplite', 'diorite', 'chalk', 'emery', 'basalt']
 TARGET_PLATFORMS = ['diorite', 'chalk', 'basalt', 'aplite']
-TIMESTAMP = 1483280603
+TIMESTAMP = 1483541970
 USE_GROUPS = True
 VERBOSE = 0
 WEBPACK = '/home/konrad/.pebble-sdk/SDKs/current/node_modules/.bin/webpack'
