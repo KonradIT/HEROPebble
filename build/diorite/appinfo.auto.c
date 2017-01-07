@@ -5,7 +5,7 @@ const PebbleProcessInfo __pbl_app_info __attribute__ ((section (".pbl_header")))
   .header = "PBLAPP",
   .struct_version = { PROCESS_INFO_CURRENT_STRUCT_VERSION_MAJOR, PROCESS_INFO_CURRENT_STRUCT_VERSION_MINOR },
   .sdk_version = { PROCESS_INFO_CURRENT_SDK_VERSION_MAJOR, PROCESS_INFO_CURRENT_SDK_VERSION_MINOR },
-  .process_version = { 1, 0 },
+  .process_version = { 1, 1 },
   .load_size = 0xb6b6,
   .offset = 0xb6b6b6b6,
   .crc = 0xb6b6b6b6,

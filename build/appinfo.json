@@ -13,7 +13,7 @@
     }, 
     "companyName": "Konrad Iturbe", 
     "enableMultiJS": true, 
-    "versionLabel": "1.0", 
+    "versionLabel": "1.1", 
     "capabilities": [
         "configurable"
     ], 

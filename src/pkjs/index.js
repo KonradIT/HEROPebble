@@ -16,8 +16,13 @@ var camera_number = "";
 var camera_model_name = "";
 var h3Pass = "nothing";
 var HERO3 = false;
+var Feature = require('pebblejs/platform/feature');
+var hbg = Feature.color('blue', 'white');
+var htc = Feature.color('white', 'black');
+
 //command function for HERO4 (/settings!)
 function command_h4(param, value) {
+    var xhr = new XMLHttpRequest();
     xhr.open("GET", "http://10.5.5.9/gp/gpControl/setting/" + param + "/" + value, true);
     xhr.send(null);
 }
@@ -51,8 +56,8 @@ main.on('click', 'up', function(e) {
                 title: 'modes',
                 backgroundColor: 'black',
                 textColor: 'white',
-                highlightBackgroundColor: 'white',
-                highlightTextColor: 'black',
+                highlightBackgroundColor: hbg,
+                highlightTextColor: htc,
                 sections: [{
                     items: [{
                         title: 'Video',
@@ -70,8 +75,8 @@ main.on('click', 'up', function(e) {
                     var video_menu = new UI.Menu({
                         backgroundColor: 'black',
                         textColor: 'white',
-                        highlightBackgroundColor: 'white',
-                        highlightTextColor: 'black',
+                        highlightBackgroundColor: hbg,
+                        highlightTextColor: htc,
                         sections: [{
                             items: [{
                                 title: 'Single',
@@ -81,17 +86,15 @@ main.on('click', 'up', function(e) {
                         }]
                     });
 
-                    if (camera_number = 16 || 15 || 17) {
+                    if (camera_number != 16 || 15 || 17) {
+                        video_menu.item(0, 2, {
+                            title: 'TLVideo'
+                        });
+                        video_menu.item(0, 3, {
+                            title: 'VideoPhoto'
+                        });
+                    }
 
-                    }
-                    else{
-                      video_menu.item(0, 2, {
-                          title: 'TLVideo'
-                      });
-                      video_menu.item(0, 3, {
-                          title: 'VideoPhoto'
-                      });
-                    }
                     video_menu.on('select', function(video_menu_selection) {
                         switch (video_menu_selection.itemIndex) {
                             case 0:
@@ -128,24 +131,21 @@ main.on('click', 'up', function(e) {
                     var photo_menu = new UI.Menu({
                         backgroundColor: 'black',
                         textColor: 'white',
-                        highlightBackgroundColor: 'white',
-                        highlightTextColor: 'black',
+                        highlightBackgroundColor: hbg,
+                        highlightTextColor: htc,
                         sections: [{
                             items: [{
                                 title: 'Single',
                             }]
                         }]
                     });
-                    if (camera_number = 16 || 15 || 17) {
-
-                    }
-                    else{
-                      photo_menu.item(0, 1, {
-                          title: 'Continuous'
-                      });
-                      photo_menu.item(0, 2, {
-                          title: 'Night'
-                      });
+                    if (camera_number != 16 || 15 || 17) {
+                        photo_menu.item(0, 1, {
+                            title: 'Continuous'
+                        });
+                        photo_menu.item(0, 2, {
+                            title: 'Night'
+                        });
                     }
                     photo_menu.on('select', function(photo_menu_selection) {
                         switch (photo_menu_selection.itemIndex) {
@@ -176,8 +176,8 @@ main.on('click', 'up', function(e) {
                     var ms_menu = new UI.Menu({
                         backgroundColor: 'black',
                         textColor: 'white',
-                        highlightBackgroundColor: 'white',
-                        highlightTextColor: 'black',
+                        highlightBackgroundColor: hbg,
+                        highlightTextColor: htc,
                         sections: [{
                             items: [{
                                 title: 'Burst'
@@ -238,7 +238,6 @@ main.on('click', 'select', function(e) {
                                     xhr.open("GET", "http://10.5.5.9/gp/gpControl/command/shutter?p=1", true);
                                     xhr.send(null);
                                     Vibe.vibrate('double');
-
                                     break;
                                 case 1:
                                     //stop
@@ -263,7 +262,12 @@ main.on('click', 'select', function(e) {
 main.on('click', 'down', function(e) {
     if (isHero4online === true) {
         if (isRec === false) {
-            var settings_menu = new UI.Menu();
+            var settings_menu = new UI.Menu({
+                backgroundColor: 'black',
+                textColor: 'white',
+                highlightBackgroundColor: hbg,
+                highlightTextColor: htc
+              });
             //TODO: Use name arrays
             settings_menu.item(0, 0, {
                 title: "Action"
@@ -368,6 +372,8 @@ function get_data_cam() {
                 var taken;
                 var framerate = "";
                 var fov;
+                var bgcolor;
+                var textcolor;
                 xhr.open("GET", "http://10.5.5.9/gp/gpControl/status", true);
 
 
@@ -419,13 +425,15 @@ function get_data_cam() {
                                     switch (obj.status[8]) {
                                         case 0:
                                             taken = "" + obj.status[39] + " shots";
-                                            main.backgroundColor('black');
+                                            bgcolor="black";
+                                            textcolor="white"
                                             isRec = false;
                                             break;
                                         case 1:
                                             taken = "" + minutes2str(obj.status[13]);
                                             isRec = true;
-                                            main.backgroundColor('red');
+                                            bgcolor=Feature.color('red', 'white');
+                                            textcolor=Feature.color('white', 'black');
                                             break;
                                     }
                                     switch (obj.settings[4]) {
@@ -678,9 +686,9 @@ function get_data_cam() {
                             main.title(current_res + " " + fov);
                             main.body(framerate + '\n' + 'Batt: ' + batt_percent + '\n' + taken + '\n' + left);
                             main.icon('images/' + mode + '_icon.png');
-                            main.bodyColor('white');
-                            main.titleColor('white');
-                            main.backgroundColor('black');
+                            main.titleColor(textcolor);
+                            main.backgroundColor(bgcolor);
+                            main.bodyColor(textcolor);
                         } else {
                             main.title('CONNECTING...');
                             main.body('Please connect the GoPro WiFi to phone!');
@@ -773,8 +781,8 @@ function get_h3_cam() {
                                     title: 'modes',
                                     backgroundColor: 'black',
                                     textColor: 'white',
-                                    highlightBackgroundColor: 'white',
-                                    highlightTextColor: 'black',
+                                    highlightBackgroundColor: hbg,
+                                    highlightTextColor: htc,
                                     sections: [{
                                         items: [{
                                             title: 'Video',
