@@ -100,6 +100,10 @@
 	var hbg = Feature.color('blue', 'white');
 	var htc = Feature.color('white', 'black');
 	
+	Pebble.addEventListener('ready', function() {
+	  // PebbleKit JS is ready!
+	  console.log('PebbleKit JS ready!');
+	});
 	//command function for HERO4 (/settings!)
 	function command_h4(param, value) {
 	    var xhr = new XMLHttpRequest();

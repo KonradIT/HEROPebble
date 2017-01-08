@@ -1,4 +1,4 @@
-# project  configured on Sat Jan  7 14:26:47 2017 by
+# project  configured on Sun Jan  8 19:51:14 2017 by
 # waf 1.7.11 (abi 98, python 2070df0 on linux2)
 # using /home/konrad/.pebble-sdk/SDKs/current/sdk-core/pebble/waf configure
 #
@@ -12,6 +12,17 @@ Setting out to
 Checking for program webpack
 /home/konrad/.pebble-sdk/SDKs/current/node_modules/.bin/webpack
 find program=['webpack'] paths=['/home/konrad/.pebble-sdk/SDKs/current/node_modules/.bin'] var='WEBPACK' -> '/home/konrad/.pebble-sdk/SDKs/current/node_modules/.bin/webpack'
+----------------------------------------
+Found Pebble SDK for emery in:
+/home/konrad/.pebble-sdk/SDKs/current/sdk-core/pebble/emery
+----------------------------------------
+Checking for program gcc,cc
+arm-none-eabi-gcc
+find program=['gcc', 'cc'] paths='' var='CC' -> 'arm-none-eabi-gcc'
+----------------------------------------
+Checking for program ar
+arm-none-eabi-ar
+find program=['ar'] paths='' var='AR' -> 'arm-none-eabi-ar'
 ----------------------------------------
 Found Pebble SDK for diorite in:
 /home/konrad/.pebble-sdk/SDKs/current/sdk-core/pebble/diorite
