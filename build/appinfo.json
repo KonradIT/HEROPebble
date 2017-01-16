@@ -3,19 +3,25 @@
         "aplite", 
         "basalt", 
         "chalk", 
-        "diorite", 
-        "emery"
+        "diorite"
     ], 
-    "uuid": "f9963dc0-430a-4ee7-8814-ee4ab4bd9206", 
-    "messageKeys": {}, 
+    "displayName": "GoPro Remote", 
+    "name": "GoPro Remote", 
+    "messageKeys": {
+        "dummy": 10000
+    }, 
     "companyName": "Konrad Iturbe", 
-    "versionLabel": "1.1", 
-    "capabilities": [], 
+    "enableMultiJS": true, 
+    "versionLabel": "1.2", 
+    "capabilities": [
+        "configurable"
+    ], 
     "sdkVersion": "3", 
-    "appKeys": {}, 
+    "appKeys": {
+        "dummy": 10000
+    }, 
     "longName": "GoPro Remote", 
-    "versionCode": 1, 
-    "shortName": "GoPro", 
+    "shortName": "GoPro Remote", 
     "watchapp": {
         "watchface": false
     }, 
@@ -98,5 +104,6 @@
                 "file": "fonts/UbuntuMono-Regular.ttf"
             }
         ]
-    }
+    }, 
+    "uuid": "f9963dc0-430a-4ee7-8814-ee4ab4bd9206"
 }

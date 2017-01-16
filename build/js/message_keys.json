@@ -1,4 +1,3 @@
 {
-    "MESSAGE_KEY_refreshrate": 10001,
-    "MESSAGE_KEY_simplemode": 10000
+    "dummy": 10000
 }

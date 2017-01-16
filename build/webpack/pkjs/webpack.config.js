@@ -22,8 +22,7 @@ const resolveRoots = ["/home/konrad/.pebble-sdk/SDKs/current/sdk-core/pebble/com
 
 // Object, { alias1: 'path1', ... }
 const resolveAliases = {"app_package.json": "/home/konrad/Pebble Projects/GoProJS/package.json",
-"pebblejs": "pebblejs/dist/js",
-"pebble-clay": "pebble-clay/dist/js"};
+"pebblejs": "pebblejs/dist/js"};
 
 // null or Object with key 'sourceMapFilename'
 const sourceMapConfig = {"sourceMapFilename": "pebble-js-app.js.map"};
