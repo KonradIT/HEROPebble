@@ -922,48 +922,6 @@
 	    return this.replace(/[^a-zA-Z0-9]+/g, "")
 	}
 	
-	xhr.open("GET", "http://10.5.5.9/camera/cv", true)
-	xhr.onload = function() {
-	    if (xhr.readyState === xhr.DONE) {
-	        if (xhr.status === 200) {
-	            var dump = xhr.responseText
-	            if (dump.indexOf("Hero3") != -1) {
-	                //Detects HERO3/3+ (2014 and 2013) Cameras
-	                get_h3_cam()
-	                HERO3 = true
-	            } else {
-	                //Further detection
-	                xhr.open("GET", "http://10.5.5.9/gp/gpControl/info", true)
-	                xhr.onload = function() {
-	                    if (xhr.readyState === xhr.DONE) {
-	                        if (xhr.status === 200) {
-	                            var dump = xhr.responseText
-	                            if (dump.indexOf("HD5") != -1) {
-	                                get_data_cam()
-	                            }
-	                            if (dump.indexOf("HERO4") != -1) {
-	                                get_data_cam()
-	                            }
-	                        }
-	                    }
-	                }
-	                xhr.send(null)
-	            }
-	            if (dump.indexOf("HERO4") != -1) {
-	                get_data_cam()
-	            }
-	            if (dump.indexOf("HD3.2") != -1) {
-	                get_data_cam()
-	            }
-	            if (dump.indexOf("HX") != -1) {
-	                get_data_cam()
-	            }
-	        }
-	    }
-	}
-	
-	xhr.send(null)
-	
 	
 	//HERO5 detection
 	    xhr.open("GET", "http://10.5.5.9/gp/gpControl/info", true)
@@ -988,7 +946,55 @@
 	        }
 	    }
 	    xhr.send(null)
+	    xhr.open("GET", "http://10.5.5.9/camera/cv", true)
+	    xhr.onload = function() {
+	        if (xhr.readyState === xhr.DONE) {
+	            if (xhr.status === 200) {
+	                var dump = xhr.responseText
+	                if (dump.indexOf("Hero3") != -1) {
+	                    //Detects HERO3/3+ (2014 and 2013) Cameras
+	                    get_h3_cam()
+	                    HERO3 = true
+	                } else {
+	                    //Further detection
+	                    xhr.open("GET", "http://10.5.5.9/gp/gpControl/info", true)
+	                    xhr.onload = function() {
+	                        if (xhr.readyState === xhr.DONE) {
+	                            if (xhr.status === 200) {
+	                                var dump = xhr.responseText
+	                                if (dump.indexOf("HERO5") != -1) {
+	                                    get_data_cam()
+	                                }
+	                                if (dump.indexOf("HERO4") != -1) {
+	                                    get_data_cam()
+	                                }
+	                                if (dump.indexOf("HX") != -1) {
+	                                    get_data_cam()
+	                                }
+	                                if (dump.indexOf("HD3.2") != -1) {
+	                                    get_data_cam()
+	                                }
 	
+	                            }
+	                        }
+	                    }
+	                    xhr.send(null)
+	                }
+	                if (dump.indexOf("HERO4") != -1) {
+	                    get_data_cam()
+	                }
+	                if (dump.indexOf("HD3.2") != -1) {
+	                    get_data_cam()
+	                }
+	                if (dump.indexOf("HX") != -1) {
+	                    get_data_cam()
+	                }
+	            }
+	        }
+	    }
+	
+	    xhr.send(null)
+	get_data_cam();
 	});
 	
 	//works on iOS!!!
