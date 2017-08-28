@@ -11,8 +11,8 @@ var isHero4online = false
 var xhr = new XMLHttpRequest()
 var presets = ""
 var MasterSimpleMode = false
-var camera_number = ""
-var camera_model_name = ""
+var camera_number
+var camera_model_name
 var h3Pass = "nothing"
 var HERO3 = false
 var Feature = require('pebblejs/platform/feature')
@@ -138,24 +138,37 @@ main.on('click', 'up', function(e) {
                             }]
                         }]
                     })
-                    if (camera_number != 16 || 15 || 17) {
+                    if (camera_number != 16 && camera_number != 15 && camera_number != 17 && camera_number != 19 && camera_number != 21) {
                         photo_menu.item(0, 1, {
-                            title: 'Continuous'
+                            title: 'Continuous',
                         })
-                        photo_menu.item(0, 2, {
-                            title: 'Night'
+                    }
+                    else{
+                        photo_menu.item(0, 1, {
+                            title: 'Night',
                         })
                     }
                     photo_menu.on('select', function(photo_menu_selection) {
                         switch (photo_menu_selection.itemIndex) {
                             case 0:
-                                command_h4_modes('1', '0')
+                                if (camera_number == 19 || camera_number == 21){
+                                    command_h4_modes('1', '1')
+                                }
+                                else{
+                                    command_h4_modes('1', '0')
+                                }
                                 photo_menu.hide()
                                 menu.hide()
                                 //get_data_cam()
                                 break
                             case 1:
-                                command_h4_modes('1', '1')
+
+                                if (camera_number == 19 || camera_number == 21){
+                                    command_h4_modes('1', '2')
+                                }
+                                else{
+                                    command_h4_modes('1', '1')
+                                }
                                 photo_menu.hide()
                                 menu.hide()
                                 //get_data_cam()
@@ -401,6 +414,7 @@ function get_data_cam() {
                                 case 4:
                                     batt_percent = "PWR"
                                     break
+                                batt_percent = model_number
                             }
 
                             switch (obj.status[43]) {
@@ -527,17 +541,22 @@ function get_data_cam() {
                                             mode = "photo"
                                             break
                                         case 1:
-                                            mode = "continuous"
-                                            switch (obj.settings[18]) {
-                                                case 0:
-                                                    framerate = "3/1"
-                                                    break
-                                                case 1:
-                                                    framerate = "5/1"
-                                                    break
-                                                case 2:
-                                                    framerate = "10/1"
-                                                    break
+                                            if(camera_number != 16 && camera_number != 19){
+                                                mode = "continuous"
+                                                switch (obj.settings[18]) {
+                                                    case 0:
+                                                        framerate = "3/1"
+                                                        break
+                                                    case 1:
+                                                        framerate = "5/1"
+                                                        break
+                                                    case 2:
+                                                        framerate = "10/1"
+                                                        break
+                                                }
+                                            }
+                                            else{
+                                                mode = "photo"
                                             }
                                             break
                                         case 2:
@@ -582,6 +601,15 @@ function get_data_cam() {
                                             break
                                         case 3:
                                             current_res = "5MP M/W"
+                                            break
+                                        case 10:
+                                            current_res = "12MP L"
+                                            break
+                                        case 8:
+                                            current_res = "12MP M"
+                                            break
+                                        case 9:
+                                            current_res = "12MP N"
                                             break
                                     }
                                     fov = ""
@@ -665,6 +693,15 @@ function get_data_cam() {
                                             break
                                         case 3:
                                             current_res = "5MP M/W"
+                                            break
+                                        case 10:
+                                            current_res = "12MP L"
+                                            break
+                                        case 8:
+                                            current_res = "12MP M"
+                                            break
+                                        case 9:
+                                            current_res = "12MP N"
                                             break
                                     }
                                     fov = ""

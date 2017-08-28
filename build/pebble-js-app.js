@@ -42,15 +42,15 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	__webpack_require__(1);
 	module.exports = __webpack_require__(2);
 
 
-/***/ },
+/***/ }),
 /* 1 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	(function(p) {
 	  if (!p === undefined) {
@@ -74,9 +74,9 @@
 	})(Pebble);
 
 
-/***/ },
+/***/ }),
 /* 2 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	Pebble.addEventListener('ready', function() {
 	  console.log("ready");
@@ -91,8 +91,8 @@
 	var xhr = new XMLHttpRequest()
 	var presets = ""
 	var MasterSimpleMode = false
-	var camera_number = ""
-	var camera_model_name = ""
+	var camera_number
+	var camera_model_name
 	var h3Pass = "nothing"
 	var HERO3 = false
 	var Feature = __webpack_require__(26)
@@ -218,24 +218,37 @@
 	                            }]
 	                        }]
 	                    })
-	                    if (camera_number != 16 || 15 || 17) {
+	                    if (camera_number != 16 && camera_number != 15 && camera_number != 17 && camera_number != 19 && camera_number != 21) {
 	                        photo_menu.item(0, 1, {
-	                            title: 'Continuous'
+	                            title: 'Continuous',
 	                        })
-	                        photo_menu.item(0, 2, {
-	                            title: 'Night'
+	                    }
+	                    else{
+	                        photo_menu.item(0, 1, {
+	                            title: 'Night',
 	                        })
 	                    }
 	                    photo_menu.on('select', function(photo_menu_selection) {
 	                        switch (photo_menu_selection.itemIndex) {
 	                            case 0:
-	                                command_h4_modes('1', '0')
+	                                if (camera_number == 19 || camera_number == 21){
+	                                    command_h4_modes('1', '1')
+	                                }
+	                                else{
+	                                    command_h4_modes('1', '0')
+	                                }
 	                                photo_menu.hide()
 	                                menu.hide()
 	                                //get_data_cam()
 	                                break
 	                            case 1:
-	                                command_h4_modes('1', '1')
+	
+	                                if (camera_number == 19 || camera_number == 21){
+	                                    command_h4_modes('1', '2')
+	                                }
+	                                else{
+	                                    command_h4_modes('1', '1')
+	                                }
 	                                photo_menu.hide()
 	                                menu.hide()
 	                                //get_data_cam()
@@ -481,6 +494,7 @@
 	                                case 4:
 	                                    batt_percent = "PWR"
 	                                    break
+	                                batt_percent = model_number
 	                            }
 	
 	                            switch (obj.status[43]) {
@@ -607,17 +621,22 @@
 	                                            mode = "photo"
 	                                            break
 	                                        case 1:
-	                                            mode = "continuous"
-	                                            switch (obj.settings[18]) {
-	                                                case 0:
-	                                                    framerate = "3/1"
-	                                                    break
-	                                                case 1:
-	                                                    framerate = "5/1"
-	                                                    break
-	                                                case 2:
-	                                                    framerate = "10/1"
-	                                                    break
+	                                            if(camera_number != 16 && camera_number != 19){
+	                                                mode = "continuous"
+	                                                switch (obj.settings[18]) {
+	                                                    case 0:
+	                                                        framerate = "3/1"
+	                                                        break
+	                                                    case 1:
+	                                                        framerate = "5/1"
+	                                                        break
+	                                                    case 2:
+	                                                        framerate = "10/1"
+	                                                        break
+	                                                }
+	                                            }
+	                                            else{
+	                                                mode = "photo"
 	                                            }
 	                                            break
 	                                        case 2:
@@ -662,6 +681,15 @@
 	                                            break
 	                                        case 3:
 	                                            current_res = "5MP M/W"
+	                                            break
+	                                        case 10:
+	                                            current_res = "12MP L"
+	                                            break
+	                                        case 8:
+	                                            current_res = "12MP M"
+	                                            break
+	                                        case 9:
+	                                            current_res = "12MP N"
 	                                            break
 	                                    }
 	                                    fov = ""
@@ -745,6 +773,15 @@
 	                                            break
 	                                        case 3:
 	                                            current_res = "5MP M/W"
+	                                            break
+	                                        case 10:
+	                                            current_res = "12MP L"
+	                                            break
+	                                        case 8:
+	                                            current_res = "12MP M"
+	                                            break
+	                                        case 9:
+	                                            current_res = "12MP N"
 	                                            break
 	                                    }
 	                                    fov = ""
@@ -977,7 +1014,7 @@
 	
 	                            }
 	                        }
-	                    }
+	                    };
 	                    xhr.send(null)
 	                }
 	                if (dump.indexOf("HERO4") != -1) {
@@ -991,7 +1028,7 @@
 	                }
 	            }
 	        }
-	    }
+	    };
 	
 	    xhr.send(null)
 	get_data_cam();
@@ -1000,9 +1037,9 @@
 	//works on iOS!!!
 
 
-/***/ },
+/***/ }),
 /* 3 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/*
 	 * This is the main PebbleJS file. You do not need to modify this file unless
@@ -1013,9 +1050,9 @@
 	__webpack_require__(4).init();
 
 
-/***/ },
+/***/ }),
 /* 4 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var Color = __webpack_require__(5);
 	var struct = __webpack_require__(6);
@@ -2519,9 +2556,9 @@
 	
 
 
-/***/ },
+/***/ }),
 /* 5 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	var Color = {};
 	
@@ -2574,9 +2611,9 @@
 	module.exports = Color;
 
 
-/***/ },
+/***/ }),
 /* 6 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * struct.js - chainable ArrayBuffer DataView wrapper
@@ -2839,9 +2876,9 @@
 	
 
 
-/***/ },
+/***/ }),
 /* 7 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/*
 	 * util2.js by Meiguro - MIT License
@@ -2952,9 +2989,9 @@
 	})();
 
 
-/***/ },
+/***/ }),
 /* 8 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var util2 = __webpack_require__(7);
 	
@@ -3044,18 +3081,18 @@
 	module.exports = myutil;
 
 
-/***/ },
+/***/ }),
 /* 9 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var Platform = __webpack_require__(10);
 	
 	module.exports = Platform;
 
 
-/***/ },
+/***/ }),
 /* 10 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	var Platform = module.exports;
 	
@@ -3068,18 +3105,18 @@
 	};
 
 
-/***/ },
+/***/ }),
 /* 11 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var Wakeup = __webpack_require__(12);
 	
 	module.exports = Wakeup;
 
 
-/***/ },
+/***/ }),
 /* 12 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var util2 = __webpack_require__(7);
 	var Emitter = __webpack_require__(13);
@@ -3282,9 +3319,9 @@
 	module.exports = new Wakeup();
 
 
-/***/ },
+/***/ }),
 /* 13 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	
 	var Emitter = function() {
@@ -3442,9 +3479,9 @@
 	module.exports = Emitter;
 
 
-/***/ },
+/***/ }),
 /* 14 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var Settings = __webpack_require__(15);
 	
@@ -3453,9 +3490,9 @@
 	module.exports = Settings;
 
 
-/***/ },
+/***/ }),
 /* 15 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var util2 = __webpack_require__(7);
 	var myutil = __webpack_require__(8);
@@ -3674,9 +3711,9 @@
 	};
 
 
-/***/ },
+/***/ }),
 /* 16 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/*
 	 * ajax.js by Meiguro - MIT License
@@ -3815,9 +3852,9 @@
 	})();
 
 
-/***/ },
+/***/ }),
 /* 17 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	module.exports = {
 		"name": "GoPro Remote",
@@ -3930,9 +3967,9 @@
 		}
 	};
 
-/***/ },
+/***/ }),
 /* 18 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * This file provides an easy way to switch the actual implementation used by all the
@@ -3949,9 +3986,9 @@
 	module.exports = simply;
 
 
-/***/ },
+/***/ }),
 /* 19 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var Timeline = __webpack_require__(20);
 	
@@ -3960,9 +3997,9 @@
 	module.exports = Timeline;
 
 
-/***/ },
+/***/ }),
 /* 20 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	var Timeline = module.exports;
 	
@@ -4003,9 +4040,9 @@
 	};
 
 
-/***/ },
+/***/ }),
 /* 21 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var myutil = __webpack_require__(8);
 	var appinfo = __webpack_require__(17);
@@ -4037,9 +4074,9 @@
 	module.exports = Resource;
 
 
-/***/ },
+/***/ }),
 /* 22 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var Emitter = __webpack_require__(13);
 	
@@ -4200,9 +4237,9 @@
 	Accel.init();
 
 
-/***/ },
+/***/ }),
 /* 23 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var util2 = __webpack_require__(7);
 	var myutil = __webpack_require__(8);
@@ -4333,9 +4370,9 @@
 	module.exports = new WindowStack();
 
 
-/***/ },
+/***/ }),
 /* 24 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var util2 = __webpack_require__(7);
 	var myutil = __webpack_require__(8);
@@ -4651,9 +4688,9 @@
 	module.exports = Window;
 
 
-/***/ },
+/***/ }),
 /* 25 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Vector2 from three.js
@@ -4831,9 +4868,9 @@
 	}
 
 
-/***/ },
+/***/ }),
 /* 26 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var Vector2 = __webpack_require__(25);
 	var Platform = __webpack_require__(10);
@@ -4914,9 +4951,9 @@
 	};
 
 
-/***/ },
+/***/ }),
 /* 27 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var util2 = __webpack_require__(7);
 	var myutil = __webpack_require__(8);
@@ -5027,9 +5064,9 @@
 	module.exports = Propable;
 
 
-/***/ },
+/***/ }),
 /* 28 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var util2 = __webpack_require__(7);
 	var Emitter = __webpack_require__(13);
@@ -5113,9 +5150,9 @@
 	module.exports = Stage;
 
 
-/***/ },
+/***/ }),
 /* 29 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var simply = __webpack_require__(18);
 	
@@ -5143,9 +5180,9 @@
 	module.exports = Voice;
 
 
-/***/ },
+/***/ }),
 /* 30 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var imagelib = __webpack_require__(31);
 	var myutil = __webpack_require__(8);
@@ -5279,9 +5316,9 @@
 	ImageService.init();
 
 
-/***/ },
+/***/ }),
 /* 31 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var PNG = __webpack_require__(32);
 	
@@ -5584,9 +5621,9 @@
 	module.exports = image;
 
 
-/***/ },
+/***/ }),
 /* 32 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	// Generated by CoffeeScript 1.4.0
 	
@@ -6054,9 +6091,9 @@
 	}).call(this);
 
 
-/***/ },
+/***/ }),
 /* 33 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * zlib.js Deflate + Inflate
@@ -6109,9 +6146,9 @@
 	}
 
 
-/***/ },
+/***/ }),
 /* 34 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * PNG Encoder from data-demo
@@ -6494,9 +6531,9 @@
 	}
 
 
-/***/ },
+/***/ }),
 /* 35 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var util2 = __webpack_require__(7);
 	var myutil = __webpack_require__(8);
@@ -6884,9 +6921,9 @@
 	module.exports = Menu;
 
 
-/***/ },
+/***/ }),
 /* 36 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var util2 = __webpack_require__(7);
 	var Vector2 = __webpack_require__(25);
@@ -7017,9 +7054,9 @@
 	module.exports = StageElement;
 
 
-/***/ },
+/***/ }),
 /* 37 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var UI = {};
 	
@@ -7041,9 +7078,9 @@
 	module.exports = UI;
 
 
-/***/ },
+/***/ }),
 /* 38 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var util2 = __webpack_require__(7);
 	var myutil = __webpack_require__(8);
@@ -7120,9 +7157,9 @@
 	module.exports = Card;
 
 
-/***/ },
+/***/ }),
 /* 39 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var util2 = __webpack_require__(7);
 	var myutil = __webpack_require__(8);
@@ -7144,9 +7181,9 @@
 	module.exports = Rect;
 
 
-/***/ },
+/***/ }),
 /* 40 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var util2 = __webpack_require__(7);
 	var myutil = __webpack_require__(8);
@@ -7176,9 +7213,9 @@
 	module.exports = Line;
 
 
-/***/ },
+/***/ }),
 /* 41 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var util2 = __webpack_require__(7);
 	var myutil = __webpack_require__(8);
@@ -7207,9 +7244,9 @@
 	module.exports = Circle;
 
 
-/***/ },
+/***/ }),
 /* 42 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var util2 = __webpack_require__(7);
 	var myutil = __webpack_require__(8);
@@ -7261,9 +7298,9 @@
 	module.exports = Radial;
 
 
-/***/ },
+/***/ }),
 /* 43 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var util2 = __webpack_require__(7);
 	var myutil = __webpack_require__(8);
@@ -7299,9 +7336,9 @@
 	module.exports = Text;
 
 
-/***/ },
+/***/ }),
 /* 44 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var util2 = __webpack_require__(7);
 	var Text = __webpack_require__(43);
@@ -7364,9 +7401,9 @@
 	module.exports = TimeText;
 
 
-/***/ },
+/***/ }),
 /* 45 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var util2 = __webpack_require__(7);
 	var myutil = __webpack_require__(8);
@@ -7396,9 +7433,9 @@
 	module.exports = ImageElement;
 
 
-/***/ },
+/***/ }),
 /* 46 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var util2 = __webpack_require__(7);
 	var myutil = __webpack_require__(8);
@@ -7414,9 +7451,9 @@
 	module.exports = Inverter;
 
 
-/***/ },
+/***/ }),
 /* 47 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var simply = __webpack_require__(18);
 	
@@ -7427,9 +7464,9 @@
 	};
 
 
-/***/ },
+/***/ }),
 /* 48 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var simply = __webpack_require__(18);
 	
@@ -7448,6 +7485,6 @@
 	};
 
 
-/***/ }
+/***/ })
 /******/ ]);
 //# sourceMappingURL=pebble-js-app.js.map
