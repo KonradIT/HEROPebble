@@ -18,7 +18,7 @@ Unofficial GoPro Remote for Pebble watches
 
 ##Download link:
 
-https://apps.getpebble.com/applications/57ef907a05e4b17e1c000186
+https://apps.rebble.io/en_US/application/57ef907a05e4b17e1c000186
 
 ##Tutorial:
 
