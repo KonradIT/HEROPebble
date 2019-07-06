@@ -4,16 +4,19 @@ Unofficial GoPro Remote for Pebble watches
 
 ## Supported watches:
 
-* Pebble OG/Steel
-* Pebble Time/Time Steel
+* Pebble Classic
+* Pebble Steel
+* Pebble Time
+* Pebble Time Steel
 * Pebble Time Round
 * Pebble 2
 
 ## Supported cameras:
 
-* GoPro HERO3/3+
-* GoPro HERO4 (incl. Session)
-* GoPro HERO5 (incl. Session)
+* GoPro HERO 3
+* GoPro HERO 3+
+* GoPro HERO 4 (including Session)
+* GoPro HERO 5 (including Session)
 * GoPro HERO+/HERO+ LCD
 
 ## Download link:
