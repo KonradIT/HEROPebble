@@ -2,6 +2,8 @@
 
 Unofficial GoPro Remote for Pebble watches
 
+![](https://i.imgur.com/I1W3CaY.jpg)
+
 ## Supported watches:
 
 * Pebble Classic
@@ -18,6 +20,15 @@ Unofficial GoPro Remote for Pebble watches
 * GoPro HERO 4 (including Session)
 * GoPro HERO 5 (including Session)
 * GoPro HERO+/HERO+ LCD
+* GoPro HERO6 Black
+* GoPro HERO7 Black
+* GoPro HERO8 Black
+* GoPro FUSION
+* GoPro MAX
+
+**GoPro HERO9 and beyond are not supported due to the control API being Bluetooth only.**
+
+For MAX and Hero8 cameras, you need to first enable WiFi (use the GoPro App), then leave the GoPro App open, lock your phone and you can use the pebble app.
 
 ## Download link:
 
